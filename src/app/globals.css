@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+/* Design tokens mirror the Figma variables shipped with the mockup
+   (components/fig-tokens.css) plus the neutrals the landing page adds. */
+@theme {
+  --color-ink: #1a2960; /* blue-5 — headings, nav */
+  --color-body: #4a4c63; /* long-form copy */
+  --color-muted: #6c6a78; /* captions, footer */
+  --color-charcoal: #2c2a33;
+
+  --color-brand: #4c4ddc; /* purple */
+  --color-brand-strong: #3b3cc0;
+  --color-accent: #ee6c16; /* orange-2 */
+  --color-accent-strong: #d95f0e;
+
+  --color-lavender: #f5f5ff; /* blue-2 — page tint */
+  --color-lavender-deep: #ededfc; /* blue-1 — cards, hairlines */
+  --color-periwinkle: #a3adff; /* blue-3 — borders */
+  --color-sky: #e5f0ff;
+  --color-peach: #ffe9da;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, sans-serif;
+
+  --shadow-search: 0 18px 48px rgb(76 77 220 / 0.13);
+
+  --animate-caret: caret-fade 1.1s ease-in-out infinite;
+
+  @keyframes caret-fade {
+    0%,
+    100% {
+      opacity: 0.3;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}
+
+/* The mockup is a fixed 1440px canvas. `--gutter` reproduces its 64px side
+   padding at desktop and tightens it on smaller viewports so every section
+   keeps a single, shared measure. */
+@layer base {
+  :root {
+    --gutter: 24px;
+  }
+
+  @media (min-width: 640px) {
+    :root {
+      --gutter: 40px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --gutter: 64px;
+    }
+  }
+
+  /* The mockup relies on the browser default leading; Tailwind preflight
+     forces 1.5. Explicit `leading-*` utilities still win where copy needs them. */
+  html {
+    line-height: normal;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: #ffffff;
+    color: var(--color-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@utility gutter-x {
+  padding-inline: var(--gutter);
+}
