@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
+import { Inter, Lato, Plus_Jakarta_Sans } from "next/font/google";
 
 import "./globals.css";
 
@@ -11,6 +11,15 @@ const inter = Inter({
 const jakarta = Plus_Jakarta_Sans({
   variable: "--font-jakarta",
   subsets: ["latin"],
+});
+
+/* Only the footer credit uses Lato (the author's brand font), so load one
+   weight and skip the preload — it must not compete with the page fonts. */
+const lato = Lato({
+  variable: "--font-lato",
+  subsets: ["latin"],
+  weight: "700",
+  preload: false,
 });
 
 const title = "ProteSì — Scrivi la patologia, ottieni l'ausilio giusto";
@@ -38,7 +47,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="it" className={`${inter.variable} ${jakarta.variable}`}>
+    <html lang="it" className={`${inter.variable} ${jakarta.variable} ${lato.variable}`}>
       <body className="font-sans antialiased">{children}</body>
     </html>
   );

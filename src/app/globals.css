@@ -21,6 +21,7 @@
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-credit: var(--font-lato), ui-sans-serif, system-ui, sans-serif; /* footer credit only */
 
   --shadow-search: 0 18px 48px rgb(76 77 220 / 0.13);
 
@@ -88,4 +89,42 @@
 
 @utility gutter-x {
   padding-inline: var(--gutter);
+}
+
+/* The 560px showcase boxes on /produttori scale as one unit through `--s`.
+   Their two-column grid is only fully open (560px per column) from a 1328px
+   viewport; the steps below keep the box inside its column until then. */
+@utility showcase-scale {
+  --s: 0.6;
+  @media (min-width: 640px) {
+    --s: 1;
+  }
+  @media (min-width: 1024px) {
+    --s: 0.72;
+  }
+  @media (min-width: 1280px) {
+    --s: 0.95;
+  }
+  @media (min-width: 1328px) {
+    --s: 1;
+  }
+}
+
+/* The 600px hero window on /rivenditori. Its column is 1/2.05 of a 1240px
+   grid, which only opens fully at a 1368px viewport; below `sm` the window
+   scales down instead of being clipped to a sliver. */
+@utility retail-hero-scale {
+  --h: 0.57;
+  @media (min-width: 640px) {
+    --h: 1;
+  }
+  @media (min-width: 1024px) {
+    --h: 0.69;
+  }
+  @media (min-width: 1280px) {
+    --h: 0.9;
+  }
+  @media (min-width: 1368px) {
+    --h: 1;
+  }
 }

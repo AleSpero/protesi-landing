@@ -8,7 +8,7 @@ import { SignupCta } from "@/components/SignupCta";
  * keep the exact proportions and overlaps of the 1440px design at every width.
  */
 const PHONE_SCALE =
-  "[--pm:0.7] min-[900px]:[--pm:0.82] lg:[--pm:0.9] xl:[--pm:1]";
+  "[--pm:0.7] md:[--pm:0.68] min-[900px]:[--pm:0.82] lg:[--pm:0.9] xl:[--pm:1]";
 
 export function Hero() {
   return (
@@ -41,15 +41,17 @@ export function Hero() {
           {/* Angled shot, cropped tight to the device — sized by height so it
               sits as a peer of the flat centre phone despite the taller silhouette.
               The extra right margin widens only this side of the cluster. */}
-          <Image
-            src="/mockups/mockup_laterale_sinistra.png"
-            alt="Risultati di ricerca in ProteSì"
-            width={900}
-            height={2234}
-            sizes="(min-width: 1280px) 249px, 225px"
-            priority
-            className="hidden h-auto w-[calc(249px*var(--pm))] max-w-none translate-y-[calc(34px*var(--pm))] mr-[calc(20px*var(--pm))] md:block"
-          />
+          <div className="hidden translate-y-[calc(34px*var(--pm))] mr-[calc(20px*var(--pm))] md:block">
+            <Image
+              src="/mockups/mockup_laterale_sinistra.png"
+              alt="Risultati di ricerca in ProteSì"
+              width={900}
+              height={2234}
+              sizes="(min-width: 1280px) 249px, 225px"
+              priority
+              className="h-auto w-[calc(249px*var(--pm))] max-w-none"
+            />
+          </div>
 
           <Image
             src="/mockups/mockup_protesi_phone_2.png"
@@ -61,17 +63,17 @@ export function Hero() {
             className="relative z-10 h-auto w-[calc(392px*var(--pm))] max-w-none"
           />
 
-          {/* Window on the nomenclator screen. The window and the four inner
-              offsets share one factor (the design's values x1.1), so enlarging
-              it shows the same crop, just bigger. */}
-          <div className="relative hidden h-[calc(550px*var(--pm))] w-[calc(264px*var(--pm))] translate-y-[calc(34px*var(--pm))] overflow-hidden md:block">
+          {/* Window on the nomenclator screen. The five numbers below are the
+              design's own crop values; `--rs` scales them together, so resizing
+              shows the same crop rather than a different slice of the screen. */}
+          <div className="relative hidden h-[calc(500px*var(--rs)*var(--pm))] w-[calc(240px*var(--rs)*var(--pm))] translate-y-[calc(10px*var(--pm))] overflow-hidden [--rs:1.21] md:block">
             <Image
               src="/mockups/mockup_laterale_3.png"
               alt="Ricerca nel nomenclatore in ProteSì"
               width={2000}
               height={1500}
-              sizes="(min-width: 1280px) 957px, 870px"
-              className="h-auto w-[calc(957px*var(--pm))] max-w-none ml-[calc(-341px*var(--pm))] mt-[calc(-105.6px*var(--pm))]"
+              sizes="(min-width: 1280px) 1053px, 950px"
+              className="h-auto w-[calc(870px*var(--rs)*var(--pm))] max-w-none ml-[calc(-310px*var(--rs)*var(--pm))] mt-[calc(-96px*var(--rs)*var(--pm))]"
             />
           </div>
         </div>

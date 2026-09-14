@@ -1,8 +1,17 @@
 # ProteSì — landing page
 
-Landing page for ProteSì, built to match the approved Figma/Claude Design mockup
-(`ProteSi Landing Final.dc.html`) pixel-for-pixel at the 1440 px design width, and to
-degrade cleanly down to mobile.
+Landing pages for ProteSì, built to match the approved Claude Design mockups
+pixel-for-pixel at the 1440 px design width, and to degrade cleanly down to mobile.
+
+| Route | Audience | Design file |
+| --- | --- | --- |
+| `/` | Professionisti sanitari | `ProteSi Landing Final.dc.html` |
+| `/produttori` | Produttori | `ProteSi Landing Produttori.dc.html` |
+| `/rivenditori` | Rivenditori | `ProteSi Landing Rivenditori.dc.html` |
+
+The audience pages are routes of one app, not separate projects: they share the design
+tokens, fonts, header, footer and several sections, and the header nav links them to
+each other.
 
 ## Stack
 
@@ -25,11 +34,22 @@ npm run build
 
 | Path | What it is |
 | --- | --- |
-| `src/app/page.tsx` | Section composition |
+| `src/app/page.tsx` | Professionals' landing — section composition |
+| `src/app/produttori/page.tsx` | Producers' landing, with its own `metadata` |
+| `src/app/rivenditori/page.tsx` | Retailers' landing, with its own `metadata` |
 | `src/app/globals.css` | Design tokens (`@theme`), gutter scale, base resets |
-| `src/lib/content.ts` | All copy and list data — edit here, not in the markup |
+| `src/lib/content.ts` | Copy and list data for `/` plus everything shared (nav, link placeholders) |
+| `src/lib/content-produttori.ts` | Copy and list data for `/produttori` |
+| `src/lib/content-rivenditori.ts` | Copy and list data for `/rivenditori` |
+| `src/components/produttori/`, `src/components/rivenditori/` | Sections only that page uses |
+| `src/components/EmailSignupCta.tsx` | Email-capture closing CTA shared by the producers' and retailers' pages |
 | `src/components/BrandLogo.tsx` | ProteSì lockup, traced from the Figma component (node `55:3959`) |
-| `src/components/Hero.tsx` | Headline, search demo and the three-device cluster |
+| `src/components/Hero.tsx` | Headline, search demo, signup CTA and the three-device cluster |
+| `src/components/BrowserFrame.tsx` | A screenshot in a decorative browser window — used by both pages |
+| `src/components/WebAppSection.tsx` | The web app in a browser frame |
+| `src/components/ComparisonSection.tsx` | Three-column comparison; takes `title`, `intro` and `data` per page |
+| `src/components/FaqSection.tsx` | Accordion on native `<details name>` — one open at a time, no JS; takes `items` |
+| `src/components/FeatureGrid.tsx` | Three feature cards; takes `items`, optionally numbered |
 | `public/mockups/` | App screenshots used in the hero and the document section |
 
 ## Notes on fidelity
@@ -50,18 +70,27 @@ npm run build
 
 ## Not yet wired
 
-Every signup entry point reads `signupHref` from `src/lib/content.ts`, and the
-company-side demo request reads `demoHref`. Both are placeholders pointing at the
-`#iscriviti` section, so nothing 404s — **swap those two values for the real URLs and
-the whole page follows.** They cover:
+Every link on the page resolves through a placeholder in `src/lib/content.ts`, so
+wiring a real destination is a one-line change:
 
-- the header *Iscriviti* button
-- the hero search field (the whole field is a link — see below)
-- the hero *Crea il tuo account* button
-- *Iscriviti e inizia* and *Richiedi una demo* in the audience cards
-- the closing *Crea il tuo account* button
+| Constant | Used by | Placeholder |
+| --- | --- | --- |
+| `signupHref` | header *Iscriviti*, hero search field, both *Crea il tuo account* buttons, *Iscriviti e inizia* | `#iscriviti` |
+| `loginHref` | header *Accedi*, "Hai già un account? *Accedi*" | `#` |
+| `contactHref` | FAQ *Scrivici*, footer *Contatti* | `#` |
+| `privacyHref` | footer *Privacy* | `#` |
+| `produttoriHref` | header *Per i produttori* | `/produttori` (built) |
+| `producerSignupHref` (`content-produttori.ts`) | every *Registrati ora* on `/produttori`, and the email form's `action` | `#registrati` |
+| `retailerSignupHref` (`content-rivenditori.ts`) | every *Registra la tua officina* on `/rivenditori`, and the email form's `action` | `#registrati` |
+| `rivenditoriHref` | header *Per i rivenditori* | `/rivenditori` (built) |
 
-The footer *Privacy* and *Contatti* links still point at `#` and need real pages.
+`SiteHeader` takes the current page's href and marks that nav item `aria-current="page"`;
+it also takes the signup label (plus a short one for phones), the button colour and the
+background, so each audience page can style it like its design.
+
+The email forms on `/produttori` and `/rivenditori` submit as a plain GET so the signup page can prefill the
+address (`?email=…`). If the real flow should not see the email in the query string, point
+its `action` at a POST endpoint instead.
 
 ## The hero search field
 

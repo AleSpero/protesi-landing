@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+import { HighlightGrid } from "@/components/HighlightGrid";
 import { documentHighlights } from "@/lib/content";
 
 export function DocumentSection() {
@@ -21,10 +22,6 @@ export function DocumentSection() {
         </div>
 
         <div>
-          <span className="mb-5 inline-block text-[11px] font-bold tracking-[0.16em] text-accent uppercase">
-            Documento di consiglio
-          </span>
-
           <h2 className="mb-5 text-balance font-display text-[32px] leading-[1.08] font-bold tracking-[-0.025em] text-ink sm:text-[38px] xl:text-[46px]">
             Il paziente esce con tutto scritto.
           </h2>
@@ -35,16 +32,7 @@ export function DocumentSection() {
             per chi lo prenderà in carico.
           </p>
 
-          <ul className="grid gap-3.5 sm:grid-cols-2">
-            {documentHighlights.map((item) => (
-              <li key={item.title} className="rounded-2xl bg-lavender p-[22px]">
-                <span className="mb-1.5 block text-[15px] font-semibold text-ink">
-                  {item.title}
-                </span>
-                <span className="text-[14px] leading-[1.5] text-body">{item.body}</span>
-              </li>
-            ))}
-          </ul>
+          <HighlightGrid items={documentHighlights} />
         </div>
       </div>
     </section>

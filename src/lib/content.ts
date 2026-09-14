@@ -1,17 +1,29 @@
 /** All landing-page copy, kept in one place so it can be edited without
  *  touching layout. Strings mirror the approved ProteSì mockup. */
 
-/** PLACEHOLDER — every signup entry point on the page points here. Swap this
- *  single value for the real signup URL once the flow exists. */
+/* PLACEHOLDERS — every link on the page resolves through one of these, so
+   wiring the real destinations is a one-line change each. They point at
+   in-page anchors (or `#`) for now so nothing 404s. */
 export const signupHref = "#iscriviti";
+export const loginHref = "#";
+export const contactHref = "#";
+export const privacyHref = "#";
+/** The sibling audience landings. */
+export const produttoriHref = "/produttori";
+export const rivenditoriHref = "/rivenditori";
 
-/** PLACEHOLDER — company-side demo request. Separate destination from signup. */
-export const demoHref = "#iscriviti";
+/** Legal entity behind ProteSì, shown in every page's footer. */
+export const company = {
+  name: "Nolides Srl",
+  vat: "04129580124",
+  address: "Via Ernesto Cairoli, 5, Varese",
+} as const;
 
+/** Audience switcher in the header; SiteHeader marks the current one. */
 export const nav = [
-  { label: "Come funziona", href: "#come-funziona" },
-  { label: "Per i professionisti", href: "#professionisti" },
-  { label: "Per le aziende", href: "#aziende" },
+  { label: "Per i professionisti", href: "/" },
+  { label: "Per i produttori", href: produttoriHref },
+  { label: "Per i rivenditori", href: rivenditoriHref },
 ] as const;
 
 /** Queries cycled through the hero search field. */
@@ -56,10 +68,68 @@ export const documentHighlights = [
   { title: "Scheda completa", body: "Produttore, ISO, distretto, indicazioni" },
 ] as const;
 
-export const companyBenefits = [
-  "Presenza nelle ricerche per patologia",
-  "Schede complete e verificate",
-  "Dati aggregati sulla domanda",
+export const clinicianBenefits = [
+  "Nessun codice da ricordare: scrivi la patologia",
+  "Documento pronto in un tap, PDF o email",
+  "Nomenclatore ISO sempre a portata di mano",
 ] as const;
 
 export const storeBadges = ["App Store — iOS", "Google Play — Android"] as const;
+
+/** "Quello che oggi fai in tre posti, in uno solo." — ProteSì against the two
+ *  tools it replaces. */
+export const comparison = {
+  protesi: {
+    title: "ProteSì",
+    points: [
+      "Ricerca per patologia, nome o codice, in linguaggio naturale",
+      "Cataloghi di più produttori confrontabili nella stessa lista",
+      "Codice ISO e riconducibilità SSN accanto a ogni prodotto",
+      "Documento di consiglio per il paziente in un tap",
+      "Gratis, su iOS, Android e browser",
+    ],
+  },
+  alternatives: [
+    {
+      title: "Nomenclatore e PDF",
+      points: [
+        "Solo codici e descrizioni generiche",
+        "Nessun prodotto reale né foto",
+        "Nessuna ricerca per patologia",
+        "Il consiglio al paziente resta a mano",
+      ],
+    },
+    {
+      title: "Cataloghi dei produttori",
+      points: [
+        "Un'azienda alla volta, nessun confronto",
+        "Devi già sapere quale marchio cercare",
+        "Codici ISO spesso assenti",
+        "Niente da consegnare al paziente",
+      ],
+    },
+  ],
+} as const;
+
+export const faqs = [
+  {
+    q: "ProteSì è gratuito per i professionisti?",
+    a: "Sì. Ricerca, preferiti e documento di consiglio sono gratuiti su iOS, Android e browser. Il servizio è sostenuto dalle aziende che pubblicano il catalogo.",
+  },
+  {
+    q: "Il documento generato vale come prescrizione?",
+    a: "No. È un consiglio informativo per il paziente con prodotto, produttore, classificazione ISO e codice quando presente. La prescrizione resta sui canali previsti dal SSN.",
+  },
+  {
+    q: "Quali prodotti trovo nel catalogo?",
+    a: "Ortesi e ausili delle aziende partner, con foto, scheda tecnica, distretto e patologie compatibili. Il nomenclatore ISO è consultabile per intero anche per i codici senza prodotto associato.",
+  },
+  {
+    q: "Devo conoscere i codici del nomenclatore?",
+    a: "No. Puoi scrivere la patologia o il nome comune dell'ausilio: la ricerca combina testo e significato e ti mostra il codice accanto al prodotto.",
+  },
+  {
+    q: "I dati dei miei pazienti vengono salvati?",
+    a: "Nel documento inserisci solo i dati minimi che decidi tu, come il comune per indicare le officine vicine. Non chiediamo né conserviamo dati clinici del paziente.",
+  },
+] as const;

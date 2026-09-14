@@ -1,4 +1,5 @@
 import { SignupCta } from "@/components/SignupCta";
+import { loginHref } from "@/lib/content";
 
 export function FinalCta() {
   return (
@@ -12,6 +13,13 @@ export function FinalCta() {
       </p>
 
       <SignupCta />
+
+      <p className="mt-3.5 text-[13px] text-muted">
+        Hai già un account?{" "}
+        <a href={loginHref} className="text-brand transition-colors hover:text-accent">
+          Accedi
+        </a>
+      </p>
     </section>
   );
 }
