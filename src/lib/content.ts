@@ -1,11 +1,15 @@
 /** All landing-page copy, kept in one place so it can be edited without
  *  touching layout. Strings mirror the approved ProteSì mockup. */
 
-/* PLACEHOLDERS — every link on the page resolves through one of these, so
-   wiring the real destinations is a one-line change each. They point at
-   in-page anchors (or `#`) for now so nothing 404s. */
-export const signupHref = "#iscriviti";
-export const loginHref = "#";
+import { appLoginHref, appSignupHref } from "@/lib/app-links";
+
+/* Every signup and login entry point on the professionals' landing opens the
+   app (see app-links.ts); the other two landings do the same with their own
+   account type. */
+export const signupHref = appSignupHref("private");
+export const loginHref = appLoginHref;
+
+/* PLACEHOLDERS — pages that don't exist yet. They point at `#` so nothing 404s. */
 export const contactHref = "#";
 export const privacyHref = "#";
 /** The sibling audience landings. */

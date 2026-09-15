@@ -1,9 +1,11 @@
 /** Copy for the producers' landing (`/produttori`). Strings mirror the
  *  approved `ProteSi Landing Produttori` mockup. */
 
-/** PLACEHOLDER — company registration. Every "Registrati ora" on the page
- *  points here; swap it for the real "portale aziende" URL once it exists. */
-export const producerSignupHref = "#registrati";
+import { appSignupHref } from "@/lib/app-links";
+
+/** Every "Registrati ora" on the page opens the app's registration with
+ *  "Azienda produttrice" preselected. */
+export const producerSignupHref = appSignupHref("product_company");
 
 export const producerFeatures = [
   {

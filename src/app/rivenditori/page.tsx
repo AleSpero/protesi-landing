@@ -53,7 +53,7 @@ export default function RivenditoriPage() {
           title="Fatti trovare dal prossimo paziente."
           intro="Registra la tua officina in dieci minuti: dal primo consiglio nella tua zona sei già nel documento."
           buttonLabel="Registra la tua officina"
-          action={retailerSignupHref}
+          accountType="selling_company"
           tone="accent"
         />
         <FaqSection items={retailerFaqs} />

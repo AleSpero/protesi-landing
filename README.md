@@ -71,29 +71,30 @@ npm run build
 - Below `lg` the header collapses to logo + *Iscriviti*; the nav anchors point at
   sections of this single-scroll page, so nothing becomes unreachable.
 
-## Not yet wired
+## Links into the app
 
-Every link on the page resolves through a placeholder in `src/lib/content.ts`, so
-wiring a real destination is a one-line change:
+Every signup and login button opens the ProteSì app (Flutter web), built from
+`src/lib/app-links.ts`:
 
-| Constant | Used by | Placeholder |
-| --- | --- | --- |
-| `signupHref` | header *Iscriviti*, hero search field, both *Crea il tuo account* buttons, *Iscriviti e inizia* | `#iscriviti` |
-| `loginHref` | header *Accedi*, "Hai già un account? *Accedi*" | `#` |
-| `contactHref` | FAQ *Scrivici*, footer *Contatti* | `#` |
-| `privacyHref` | footer *Privacy* | `#` |
-| `produttoriHref` | header *Per i produttori* | `/produttori` (built) |
-| `producerSignupHref` (`content-produttori.ts`) | every *Registrati ora* on `/produttori`, and the email form's `action` | `#registrati` |
-| `retailerSignupHref` (`content-rivenditori.ts`) | every *Registra la tua officina* on `/rivenditori`, and the email form's `action` | `#registrati` |
-| `rivenditoriHref` | header *Per i rivenditori* | `/rivenditori` (built) |
+| Button | Opens |
+| --- | --- |
+| every signup CTA on `/`, and the hero search field | `APP/#/signup?type=private` |
+| every *Registrati ora* on `/produttori` | `APP/#/signup?type=product_company` |
+| every *Registra la tua officina* on `/rivenditori` | `APP/#/signup?type=selling_company` |
+| the email forms on `/produttori` and `/rivenditori` | the same, plus `&email=…` |
+| every *Accedi* | `APP/#/login` |
 
-`SiteHeader` takes the current page's href and marks that nav item `aria-current="page"`;
-it also takes the signup label (plus a short one for phones), the button colour and the
-background, so each audience page can style it like its design.
+`APP` is `NEXT_PUBLIC_APP_URL`, defaulting to `https://protesi-app.vercel.app`. When
+the app moves to its own domain, set that variable in the Vercel project (or change the
+default) and redeploy.
 
-The email forms on `/produttori` and `/rivenditori` submit as a plain GET so the signup page can prefill the
-address (`?email=…`). If the real flow should not see the email in the query string, point
-its `action` at a POST endpoint instead.
+The app uses Flutter's hash routing, so the route and its query live after `#` —
+which also keeps a prefilled email out of server logs. The `type` values are the app's
+`UserType.value`s; the app preselects that type and prefills the email (see
+`protesi-app`: `app_router.dart`, `RegistrationFlowScreen`).
+
+Still placeholders (`#`): `contactHref` (FAQ *Scrivici*, footer *Contatti*) and
+`privacyHref` (footer *Privacy*).
 
 ## The hero search field
 

@@ -53,7 +53,7 @@ export default function ProduttoriPage() {
           title="Porta il tuo catalogo in ProteSì."
           intro="Registra la tua azienda e carica il catalogo: dalla pubblicazione i tuoi prodotti sono in ricerca."
           buttonLabel="Registrati ora"
-          action={producerSignupHref}
+          accountType="product_company"
         />
         <FaqSection items={producerFaqs} />
       </main>

@@ -1,9 +1,11 @@
 /** Copy for the retailers' landing (`/rivenditori`). Strings mirror the
  *  approved `ProteSi Landing Rivenditori` mockup. */
 
-/** PLACEHOLDER — shop registration. Every "Registra la tua officina" on the
- *  page points here; swap it for the real URL once the flow exists. */
-export const retailerSignupHref = "#registrati";
+import { appSignupHref } from "@/lib/app-links";
+
+/** Every "Registra la tua officina" on the page opens the app's registration
+ *  with "Azienda venditrice" preselected. */
+export const retailerSignupHref = appSignupHref("selling_company");
 
 /** The "Dove trovarlo" card floating over the hero image. */
 export const nearbyShops = {
