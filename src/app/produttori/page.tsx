@@ -9,6 +9,7 @@ import { HomeLogoSection } from "@/components/produttori/HomeLogoSection";
 import { OnboardingSteps } from "@/components/produttori/OnboardingSteps";
 import { ProducerDetailSection } from "@/components/produttori/ProducerDetailSection";
 import { ProducerHero } from "@/components/produttori/ProducerHero";
+import { ProducerSearchSection } from "@/components/produttori/ProducerSearchSection";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
 import { producerSignupHref, produttoriHref } from "@/lib/links";
@@ -39,6 +40,7 @@ export default function ProduttoriPage() {
       />
       <main>
         <ProducerHero />
+        <ProducerSearchSection />
         <FeatureGrid items={features} numbered />
         <ProducerDetailSection />
         <OnboardingSteps />

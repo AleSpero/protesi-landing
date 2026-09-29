@@ -1,10 +1,12 @@
+import Image from "next/image";
 import { useMessages, useTranslations } from "next-intl";
 
-import { signupHref } from "@/lib/links";
+import { CheckList } from "@/components/CheckList";
+import { appStoreHref, playStoreHref, signupHref } from "@/lib/links";
 
 export function AudienceSection() {
   const t = useTranslations("home.audience");
-  const { app, clinicians } = useMessages().home.audience;
+  const { clinicians } = useMessages().home.audience;
 
   return (
     <section className="bg-ink gutter-x py-16 xl:py-20">
@@ -18,15 +20,28 @@ export function AudienceSection() {
             {t("app.intro")}
           </p>
 
-          <div className="mb-7 flex flex-wrap gap-3">
-            {Object.entries(app.storeBadges).map(([key, badge]) => (
-              <span
-                key={key}
-                className="whitespace-nowrap rounded-[10px] border border-white/30 px-[18px] py-[11px] text-[13px] font-semibold text-white"
-              >
-                {badge}
-              </span>
-            ))}
+          {/* The official Italian badges (Apple marketing toolbox, Google Play
+              badge generator), shown at the same height. */}
+          <div className="mb-7 flex flex-wrap items-center gap-3">
+            <a href={appStoreHref} className="block">
+              <Image
+                src="/badges/app-store-it.svg"
+                alt={t("app.storeBadges.ios")}
+                width={120}
+                height={40}
+                className="block h-11 w-auto"
+              />
+            </a>
+            <a href={playStoreHref} className="block">
+              <Image
+                src="/badges/google-play-it.png"
+                alt={t("app.storeBadges.android")}
+                width={646}
+                height={192}
+                sizes="148px"
+                className="block h-11 w-auto"
+              />
+            </a>
           </div>
 
           <a
@@ -46,14 +61,9 @@ export function AudienceSection() {
             {t("clinicians.intro")}
           </p>
 
-          <ul className="mb-7 flex flex-col gap-3">
-            {Object.entries(clinicians.benefits).map(([key, benefit]) => (
-              <li key={key} className="text-[14.5px] text-charcoal">
-                <span aria-hidden="true">— </span>
-                {benefit}
-              </li>
-            ))}
-          </ul>
+          <CheckList items={clinicians.benefits} className="mb-5 text-[14.5px]" />
+
+          <p className="mb-7 text-[14.5px] leading-[1.6] text-charcoal">{t("clinicians.note")}</p>
 
           <a
             href="#come-funziona"

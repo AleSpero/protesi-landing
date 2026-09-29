@@ -12,6 +12,9 @@ export const loginHref = appLoginHref;
 /* PLACEHOLDERS — pages that don't exist yet. They point at `#` so nothing 404s. */
 export const contactHref = "#";
 export const privacyHref = "#";
+/** The app's store listings, behind the badges on `/`. */
+export const appStoreHref = "#";
+export const playStoreHref = "#";
 
 /** The sibling audience landings. */
 export const produttoriHref = "/produttori";

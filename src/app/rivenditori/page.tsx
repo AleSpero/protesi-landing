@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { useMessages, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { getTranslations } from "next-intl/server";
 
+import { ContactSection } from "@/components/ContactSection";
 import { EmailSignupCta } from "@/components/EmailSignupCta";
-import { FaqSection } from "@/components/FaqSection";
 import { RetailerDocumentSection } from "@/components/rivenditori/RetailerDocumentSection";
 import { RetailerHero } from "@/components/rivenditori/RetailerHero";
 import { RetailerProfileSection } from "@/components/rivenditori/RetailerProfileSection";
@@ -27,7 +27,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default function RivenditoriPage() {
   const t = useTranslations("rivenditori");
-  const { faqs } = useMessages().rivenditori;
 
   return (
     <div className="bg-white">
@@ -41,8 +40,8 @@ export default function RivenditoriPage() {
       />
       <main>
         <RetailerHero />
-        <RetailerSteps />
         <RetailerDocumentSection />
+        <RetailerSteps />
         <RetailerProfileSection />
         <EmailSignupCta
           id="registrati"
@@ -52,7 +51,7 @@ export default function RivenditoriPage() {
           accountType="selling_company"
           tone="accent"
         />
-        <FaqSection items={faqs} />
+        <ContactSection />
       </main>
       <SiteFooter />
     </div>

@@ -6,8 +6,7 @@ type SignupCtaProps = {
   className?: string;
 };
 
-/** The page's primary action. Used in the hero and again at the foot of the
- *  page, so both stay identical if the label, style or destination changes. */
+/** The page's primary action, in the closing CTA at the foot of the page. */
 export function SignupCta({ className = "" }: SignupCtaProps) {
   const t = useTranslations("home");
 

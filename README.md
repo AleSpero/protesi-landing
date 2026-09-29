@@ -48,12 +48,16 @@ npm run build
 | `src/components/produttori/`, `src/components/rivenditori/` | Sections only that page uses |
 | `src/components/EmailSignupCta.tsx` | Email-capture closing CTA shared by the producers' and retailers' pages |
 | `src/components/BrandLogo.tsx` | ProteSì lockup, traced from the Figma component (node `55:3959`) |
-| `src/components/Hero.tsx` | Headline, search demo, signup CTA and the three-device cluster |
+| `src/components/Hero.tsx` | Headline, search demo and the three-device cluster |
+| `src/components/PhoneCluster.tsx` | The three-device cluster closing the heroes of `/` and `/produttori` |
+| `src/components/NomenclatorSection.tsx`, `PatientDocumentSection.tsx` | The nomenclator (with the MMG callout) and patient-document sections of `/` |
+| `src/components/CheckList.tsx` | Short list with check marks instead of dashes |
 | `src/components/BrowserFrame.tsx` | A screenshot in a decorative browser window — used by both pages |
 | `src/components/WebAppSection.tsx` | The web app in a browser frame |
 | `src/components/FaqSection.tsx` | Accordion on native `<details name>` — one open at a time, no JS; takes `items` |
+| `src/components/ContactSection.tsx` | The FAQ's "Scrivici" line, also used alone on `/rivenditori`, which has no FAQ |
 | `src/components/FeatureGrid.tsx` | Three feature cards; takes `items`, optionally numbered |
-| `public/mockups/` | App screenshots used in the hero and the document section |
+| `public/mockups/` | App screenshots and mockups used across the three pages |
 
 ## Editing the copy
 
@@ -113,9 +117,8 @@ Every signup and login button opens the ProteSì app (Flutter web), built from
 | the email forms on `/produttori` and `/rivenditori` | the same, plus `&email=…` |
 | every *Accedi* | `APP/#/login` |
 
-`APP` is `NEXT_PUBLIC_APP_URL`, defaulting to `https://protesi-app.vercel.app`. When
-the app moves to its own domain, set that variable in the Vercel project (or change the
-default) and redeploy.
+`APP` is `NEXT_PUBLIC_APP_URL`, defaulting to `https://app.protesi.io`. To point a
+deployment at another app instance, set that variable in the Vercel project and redeploy.
 
 The app uses Flutter's hash routing, so the route and its query live after `#` —
 which also keeps a prefilled email out of server logs. The `type` values are the app's

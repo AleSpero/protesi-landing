@@ -1,13 +1,12 @@
 type FeatureGridProps = {
-  id?: string;
   items: Record<string, { title: string; body: string }>;
   /** Prefix each card with 01, 02, 03… */
   numbered?: boolean;
 };
 
-export function FeatureGrid({ id, items, numbered = false }: FeatureGridProps) {
+export function FeatureGrid({ items, numbered = false }: FeatureGridProps) {
   return (
-    <section id={id} className="bg-white gutter-x py-16 xl:py-22">
+    <section className="bg-white gutter-x py-16 xl:py-22">
       <div className="mx-auto grid max-w-[1200px] gap-6 md:grid-cols-3">
         {Object.entries(items).map(([key, feature], i) => (
           <article key={key} className="rounded-3xl bg-lavender p-7 xl:p-9">

@@ -1,6 +1,8 @@
 import Image from "next/image";
 import { useMessages, useTranslations } from "next-intl";
 
+import { CheckList } from "@/components/CheckList";
+
 export function HomeLogoSection() {
   const t = useTranslations("produttori.homeLogo");
   const { points } = useMessages().produttori.homeLogo;
@@ -12,10 +14,10 @@ export function HomeLogoSection() {
           {/* Outer size = the design's content box plus its 1px border. */}
           <div className="relative h-[calc(522px*var(--s))] w-[calc(562px*var(--s))] shrink-0 overflow-hidden rounded-3xl border border-[#e6e7fb] bg-lavender">
             <Image
-              src="/mockups/mockup_protesi_phone_2.png"
+              src="/mockups/mockup_protesi_home.png"
               alt={t("imageAlt")}
-              width={1478}
-              height={2519}
+              width={1479}
+              height={2521}
               sizes="(min-width: 640px) 540px, 330px"
               className="absolute bottom-0 left-1/2 block h-auto w-[calc(540px*var(--s))] max-w-none -translate-x-1/2"
             />
@@ -31,14 +33,7 @@ export function HomeLogoSection() {
             {t("intro")}
           </p>
 
-          <ul className="flex flex-col gap-3">
-            {Object.entries(points).map(([key, point]) => (
-              <li key={key} className="text-[15px] text-charcoal">
-                <span aria-hidden="true">— </span>
-                {point}
-              </li>
-            ))}
-          </ul>
+          <CheckList items={points} className="text-[15px]" />
         </div>
       </div>
     </section>

@@ -3,32 +3,35 @@ import { useMessages, useTranslations } from "next-intl";
 
 import { HighlightGrid } from "@/components/HighlightGrid";
 
+/** Lavender, so it reads as its own band between the white hero and steps. */
 export function RetailerDocumentSection() {
   const t = useTranslations("rivenditori.document");
   const { highlights } = useMessages().rivenditori.document;
 
   return (
-    <section className="bg-white gutter-x py-16 xl:py-25">
+    <section className="bg-lavender gutter-x py-16 xl:py-25">
       <div className="mx-auto grid max-w-[1200px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
         {/* `showcase-scale` (globals.css) sets `--s`, scaling the box and its contents together. */}
         <div className="showcase-scale flex justify-center">
-          {/* Outer size = the design's 560 x 520 content box plus its 1px border. */}
-          <div className="relative h-[calc(522px*var(--s))] w-[calc(562px*var(--s))] shrink-0 overflow-hidden rounded-3xl border border-[#e6e7fb] bg-lavender">
+          {/* Outer size = the design's 560 x 520 content box plus its 1px border.
+              The document's shops page sits behind; the app's multi-selection in front. */}
+          <div className="relative h-[calc(522px*var(--s))] w-[calc(562px*var(--s))] shrink-0 overflow-hidden rounded-3xl border border-[#e6e7fb] bg-lavender-deep">
             <Image
-              src="/mockups/web_home.png"
-              alt={t("imageAlt.web")}
-              width={1427}
-              height={1046}
-              sizes="(min-width: 640px) 1000px, 600px"
-              className="block h-auto w-[calc(1000px*var(--s))] max-w-none ml-[calc(-420px*var(--s))] mt-[calc(-300px*var(--s))]"
+              src="/mockups/documento_officine.png"
+              alt={t("imageAlt.document")}
+              width={1656}
+              height={2342}
+              sizes="(min-width: 640px) 380px, 228px"
+              quality={90}
+              className="absolute top-[calc(20px*var(--s))] right-[calc(28px*var(--s))] block h-auto w-[calc(380px*var(--s))] max-w-none rounded-md shadow-[0_20px_40px_rgb(26_41_96/0.18)] ring-1 ring-[#e6e7fb]"
             />
             <Image
-              src="/mockups/mockup_protesi_phone_2.png"
+              src="/mockups/mockup_protesi_phone_3.png"
               alt={t("imageAlt.app")}
-              width={1478}
-              height={2519}
-              sizes="(min-width: 640px) 220px, 132px"
-              className="absolute bottom-[calc(-90px*var(--s))] left-[calc(24px*var(--s))] block h-auto w-[calc(220px*var(--s))] max-w-none drop-shadow-[0_20px_40px_rgb(26_41_96/0.25)]"
+              width={1000}
+              height={1704}
+              sizes="(min-width: 640px) 230px, 138px"
+              className="absolute bottom-[calc(-70px*var(--s))] left-[calc(30px*var(--s))] block h-auto w-[calc(230px*var(--s))] max-w-none drop-shadow-[0_20px_40px_rgb(26_41_96/0.25)]"
             />
           </div>
         </div>
@@ -42,7 +45,7 @@ export function RetailerDocumentSection() {
             {t("intro")}
           </p>
 
-          <HighlightGrid items={highlights} />
+          <HighlightGrid items={highlights} tone="white" />
         </div>
       </div>
     </section>

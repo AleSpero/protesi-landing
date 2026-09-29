@@ -36,12 +36,13 @@ export function ProducerDetailSection() {
               className="block h-auto w-[calc(900px*var(--s))] max-w-none ml-[calc(-40px*var(--s))]"
             />
             <Image
-              src="/mockups/mockup_flat_1.png"
-              alt={t("imageAlt.app")}
-              width={920}
-              height={1568}
-              sizes="(min-width: 640px) 230px, 140px"
-              className="absolute bottom-[calc(-60px*var(--s))] left-[calc(60px*var(--s))] block h-auto w-[calc(230px*var(--s))] max-w-none drop-shadow-[0_20px_40px_rgb(26_41_96/0.25)]"
+              src="/mockups/documento_ausili.png"
+              alt={t("imageAlt.document")}
+              width={1656}
+              height={2342}
+              sizes="(min-width: 640px) 320px, 192px"
+              quality={90}
+              className="absolute bottom-[calc(-40px*var(--s))] left-[calc(36px*var(--s))] block h-auto w-[calc(320px*var(--s))] max-w-none rounded-md shadow-[0_20px_40px_rgb(26_41_96/0.25)] ring-1 ring-[#e6e7fb]"
             />
           </div>
         </div>

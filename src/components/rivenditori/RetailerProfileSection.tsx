@@ -1,9 +1,6 @@
 import Image from "next/image";
 import { useMessages, useTranslations } from "next-intl";
 
-/** `--r` scales the two-phone cluster as one unit so it fits its column. */
-const CLUSTER_SCALE = "[--r:0.6] sm:[--r:1] lg:[--r:0.78] xl:[--r:1]";
-
 export function RetailerProfileSection() {
   const t = useTranslations("rivenditori.profile");
   const { points } = useMessages().rivenditori.profile;
@@ -30,26 +27,16 @@ export function RetailerProfileSection() {
           </ul>
         </div>
 
-        <div className={`flex items-end justify-center gap-[calc(16px*var(--r))] ${CLUSTER_SCALE}`}>
+        {/* The partner pop-up as the app shows it. */}
+        <div className="flex justify-center">
           <Image
-            src="/mockups/mockup_protesi_phone_3.png"
-            alt={t("imageAlt.results")}
+            src="/mockups/popup_pubblicita.png"
+            alt={t("imageAlt")}
             width={1000}
             height={1704}
-            sizes="(min-width: 640px) 250px, 150px"
-            className="block h-auto w-[calc(250px*var(--r))] max-w-none translate-y-[calc(30px*var(--r))]"
+            sizes="(min-width: 1280px) 290px, (min-width: 640px) 270px, 230px"
+            className="block h-auto w-[230px] sm:w-[270px] xl:w-[290px]"
           />
-          {/* Window on the product-detail screen, cropped as in the design. */}
-          <div className="relative h-[calc(520px*var(--r))] w-[calc(250px*var(--r))] shrink-0 overflow-hidden">
-            <Image
-              src="/mockups/mockup_laterale_4.png"
-              alt={t("imageAlt.detail")}
-              width={2000}
-              height={1500}
-              sizes="(min-width: 640px) 780px, 470px"
-              className="block h-auto w-[calc(780px*var(--r))] max-w-none ml-[calc(-262px*var(--r))] mt-[calc(-76px*var(--r))]"
-            />
-          </div>
         </div>
       </div>
     </section>

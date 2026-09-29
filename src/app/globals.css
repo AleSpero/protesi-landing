@@ -18,6 +18,7 @@
   --color-periwinkle: #a3adff; /* blue-3 — borders */
   --color-sky: #e5f0ff;
   --color-peach: #ffe9da;
+  --color-success: #1f9d55; /* the app's green check, e.g. the MMG flag */
 
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-jakarta), var(--font-inter), ui-sans-serif, sans-serif;
@@ -110,9 +111,9 @@
   }
 }
 
-/* The 600px hero window on /rivenditori. Its column is 1/2.05 of a 1240px
-   grid, which only opens fully at a 1368px viewport; below `sm` the window
-   scales down instead of being clipped to a sliver. */
+/* The 560px pair of phones in the /rivenditori hero. Its column is 1/2.05 of
+   a 1240px grid, which only opens fully at a 1368px viewport; below `sm` the
+   pair scales down to fit the screen. */
 @utility retail-hero-scale {
   --h: 0.57;
   @media (min-width: 640px) {

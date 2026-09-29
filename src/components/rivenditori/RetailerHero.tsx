@@ -1,28 +1,28 @@
 import Image from "next/image";
 import { useMessages, useTranslations } from "next-intl";
 
+import { BrandLogo } from "@/components/BrandLogo";
 import { retailerSignupHref } from "@/lib/links";
 
 export function RetailerHero() {
   const t = useTranslations("rivenditori.hero");
-  const { intro, nearby } = useMessages().rivenditori.hero;
+  const { nearby } = useMessages().rivenditori.hero;
 
   return (
-    <section id="top" className="bg-white gutter-x pt-10 sm:pt-12 xl:pt-16">
+    <section id="top" className="bg-white gutter-x pt-10 pb-12 sm:pt-12 xl:pt-16 xl:pb-16">
       <div className="mx-auto grid max-w-[1240px] items-center gap-10 lg:grid-cols-[1.05fr_1fr]">
         <div>
-          <h1 className="mb-[22px] text-balance font-display text-[38px] leading-[1.04] font-extrabold tracking-[-0.03em] text-ink sm:text-[48px] lg:text-[56px] xl:text-[64px]">
-            {t.rich("title", { br: () => <br /> })}
+          {/* The lockup stands in for a headline; the tagline under it keeps
+              the heading's text meaningful for search and screen readers. */}
+          <h1 className="mb-9">
+            <BrandLogo
+              idPrefix="protesi-logo-hero"
+              className="mb-6 block h-auto w-[260px] sm:w-[380px] xl:w-[440px]"
+            />
+            <span className="block max-w-[520px] text-balance font-display text-[22px] leading-[1.3] font-bold tracking-[-0.01em] text-ink sm:text-[27px] xl:text-[30px]">
+              {t("tagline")}
+            </span>
           </h1>
-
-          {/* One <p> per entry of `intro`. */}
-          <div className="mb-9 flex max-w-[520px] flex-col gap-4">
-            {Object.entries(intro).map(([key, paragraph]) => (
-              <p key={key} className="text-pretty text-[16px] leading-[1.6] text-body sm:text-[18px]">
-                {paragraph}
-              </p>
-            ))}
-          </div>
 
           <div className="flex flex-wrap gap-3.5">
             <a
@@ -40,44 +40,55 @@ export function RetailerHero() {
           </div>
         </div>
 
-        {/* `retail-hero-scale` (globals.css) sets `--h`. The window is allowed
-            to flex-shrink to its column, as in the design, which clips the
-            right edge of the phone rather than scaling it. */}
+        {/* `retail-hero-scale` (globals.css) sets `--h`, scaling the two phones
+            and their spacing as one unit so the pair always fits its column. */}
         <div className="retail-hero-scale relative flex flex-col items-center sm:block">
-          <div className="relative h-[calc(560px*var(--h))] w-[calc(600px*var(--h))] max-w-full overflow-hidden sm:mx-auto">
+          {/* Each PNG has ~40px of transparent margin either side of the
+              device; the second phone's negative margin eats most of it, so
+              the two frames sit about 28px apart. */}
+          <div className="flex justify-center">
             <Image
-              src="/mockups/mockup_inclinato_4.png"
-              alt={t("imageAlt")}
-              width={2000}
-              height={1500}
-              sizes="(min-width: 640px) 1040px, 600px"
+              src="/mockups/mockup_protesi_home.png"
+              alt={t("imageAlt.home")}
+              width={1479}
+              height={2521}
+              sizes="(min-width: 640px) 270px, 155px"
               priority
-              className="block h-auto w-[calc(1040px*var(--h))] max-w-none ml-[calc(-230px*var(--h))] mt-[calc(-120px*var(--h))]"
+              className="block h-auto w-[calc(270px*var(--h))] max-w-none"
+            />
+            <Image
+              src="/mockups/mockup_protesi_phone_3.png"
+              alt={t("imageAlt.results")}
+              width={1000}
+              height={1704}
+              sizes="(min-width: 640px) 270px, 155px"
+              priority
+              className="block h-auto w-[calc(270px*var(--h))] max-w-none ml-[calc(-52px*var(--h))]"
             />
           </div>
 
-          {/* 312px = the design's 270px content box plus padding and border.
-              Floats over the image from `sm` up; sits under it on phones. */}
-          <div className="mt-4 w-[312px] max-w-full rounded-2xl border border-[#dde0ff] bg-white px-5 py-[18px] text-left shadow-[0_18px_44px_rgb(26_41_96/0.16)] sm:absolute sm:bottom-[calc(60px*var(--h))] sm:left-[calc(-10px*var(--h))] sm:mt-0">
-            <span className="mb-2.5 block text-[11px] font-bold tracking-[0.14em] text-muted uppercase">
+          {/* A notch smaller than the design's 312px card, so it covers less of
+              the phones. Floats over them from `sm` up; sits under them on phones. */}
+          <div className="mt-4 w-[268px] max-w-full rounded-2xl border border-[#dde0ff] bg-white px-4 py-3.5 text-left shadow-[0_18px_44px_rgb(26_41_96/0.16)] sm:absolute sm:bottom-[calc(40px*var(--h))] sm:left-[calc(-10px*var(--h))] sm:mt-0">
+            <span className="mb-2 block text-[10px] font-bold tracking-[0.14em] text-muted uppercase">
               {t("nearby.title")}
             </span>
             {/* The first row is the reader's own shop, so it is the one highlighted. */}
-            <ul className="flex flex-col gap-2">
+            <ul className="flex flex-col gap-1.5">
               {Object.entries(nearby.shops).map(([key, shop], i) => {
                 const highlight = i === 0;
                 return (
                   <li
                     key={key}
-                    className={`flex items-center justify-between rounded-[10px] px-3 py-2.5 ${highlight ? "bg-peach" : "bg-lavender"}`}
+                    className={`flex items-center justify-between rounded-[9px] px-2.5 py-2 ${highlight ? "bg-peach" : "bg-lavender"}`}
                   >
                     <span
-                      className={`text-[13.5px] text-ink ${highlight ? "font-semibold" : ""}`}
+                      className={`text-[12.5px] text-ink ${highlight ? "font-semibold" : ""}`}
                     >
                       {shop.name}
                     </span>
                     <span
-                      className={`text-[12px] ${highlight ? "font-semibold text-accent" : "text-muted"}`}
+                      className={`text-[11px] ${highlight ? "font-semibold text-accent" : "text-muted"}`}
                     >
                       {shop.distance}
                     </span>

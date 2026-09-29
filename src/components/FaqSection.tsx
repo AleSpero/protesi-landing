@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
 
-import { contactHref } from "@/lib/links";
+import { ContactPrompt } from "@/components/ContactSection";
 
 type FaqSectionProps = {
   items: Record<string, { q: string; a: string }>;
@@ -22,13 +22,7 @@ export function FaqSection({ items }: FaqSectionProps) {
             {t("title")}
           </h2>
           <p className="text-pretty text-[17px] leading-[1.6] text-body">
-            {t.rich("contact", {
-              link: (chunks) => (
-                <a href={contactHref} className="text-brand transition-colors hover:text-accent">
-                  {chunks}
-                </a>
-              ),
-            })}
+            <ContactPrompt />
           </p>
         </div>
 

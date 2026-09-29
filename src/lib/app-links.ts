@@ -1,7 +1,7 @@
 /** Links into the ProteSì app (Flutter web, separate Vercel project).
  *  Set NEXT_PUBLIC_APP_URL to point a deployment at another app instance;
- *  the fallback is the current production app. */
-const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://protesi-app.vercel.app").replace(
+ *  the fallback is the production app on its own domain. */
+const APP_URL = (process.env.NEXT_PUBLIC_APP_URL || "https://app.protesi.io").replace(
   /\/+$/,
   "",
 );

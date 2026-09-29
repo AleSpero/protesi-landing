@@ -39,6 +39,7 @@ export function BrowserFrame({ url, src, alt, width, height, sizes, priority }: 
         height={height}
         sizes={sizes}
         priority={priority}
+        quality={90}
         className="block h-auto w-full"
       />
     </figure>

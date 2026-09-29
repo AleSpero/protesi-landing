@@ -7,14 +7,9 @@ export function OnboardingSteps() {
   return (
     <section id="come-funziona" className="scroll-mt-4 bg-ink gutter-x py-16 xl:py-22">
       <div className="mx-auto max-w-[1200px]">
-        <div className="mb-10 grid gap-6 lg:mb-13 lg:grid-cols-2 lg:items-end lg:gap-10">
-          <h2 className="text-balance font-display text-[32px] leading-[1.08] font-bold tracking-[-0.025em] text-white sm:text-[38px] xl:text-[46px]">
-            {t("title")}
-          </h2>
-          <p className="max-w-[480px] text-pretty text-[17px] leading-[1.65] text-white/74">
-            {t("intro")}
-          </p>
-        </div>
+        <h2 className="mb-10 max-w-[760px] text-balance font-display text-[32px] leading-[1.08] font-bold tracking-[-0.025em] text-white sm:text-[38px] lg:mb-13 xl:text-[46px]">
+          {t("title")}
+        </h2>
 
         <ol className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {Object.entries(steps).map(([key, step], i) => (
