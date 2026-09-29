@@ -2,7 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-import { districts, heroQueries, heroQueryInterval, signupHref } from "@/lib/content";
+import { signupHref } from "@/lib/links";
+
+/** Milliseconds each example query stays on screen. */
+const QUERY_INTERVAL = 2600;
+
+/** District chip colours, in order; they repeat if more districts are added. */
+const DISTRICT_TONES = ["bg-sky", "bg-lavender-deep", "bg-peach", "bg-lavender-deep", "bg-sky"];
+
+type SearchDemoProps = {
+  /** `home.hero.search` from the messages, passed down by the server-rendered
+   *  Hero so the messages never ship to the browser. */
+  content: {
+    label: string;
+    button: string;
+    queries: Record<string, string>;
+    districtsLabel: string;
+    districts: Record<string, string>;
+  };
+};
 
 /**
  * Replica of the in-app search field, cycling through example queries to show
@@ -13,7 +31,9 @@ import { districts, heroQueries, heroQueryInterval, signupHref } from "@/lib/con
  * label, otherwise its accessible name would change every few seconds as the
  * example query rotates.
  */
-export function SearchDemo() {
+export function SearchDemo({ content }: SearchDemoProps) {
+  const { label, button, districtsLabel } = content;
+  const queries = Object.values(content.queries);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -21,17 +41,17 @@ export function SearchDemo() {
     if (reduced.matches) return;
 
     const id = window.setInterval(
-      () => setIndex((i) => (i + 1) % heroQueries.length),
-      heroQueryInterval,
+      () => setIndex((i) => (i + 1) % queries.length),
+      QUERY_INTERVAL,
     );
     return () => window.clearInterval(id);
-  }, []);
+  }, [queries.length]);
 
   return (
     <>
       <a
         href={signupHref}
-        aria-label="Crea un account per cercare in ProteSì"
+        aria-label={label}
         className="group mx-auto mb-5 flex max-w-[811px] items-center gap-3 rounded-[20px] border-[1.5px] border-periwinkle bg-white px-4 py-4 text-left shadow-search transition-colors hover:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:gap-[18px] sm:px-6 sm:py-5"
       >
         <span
@@ -44,7 +64,7 @@ export function SearchDemo() {
           aria-hidden="true"
           className="line-clamp-2 min-h-[39px] min-w-0 flex-1 text-[15px] leading-[1.3] font-medium text-ink sm:line-clamp-none sm:min-h-0 sm:truncate sm:text-[20px] sm:leading-normal"
         >
-          {heroQueries[index]}
+          {queries[index]}
         </span>
         <span
           aria-hidden="true"
@@ -54,18 +74,18 @@ export function SearchDemo() {
           aria-hidden="true"
           className="shrink-0 whitespace-nowrap rounded-[12px] bg-brand px-4 py-2.5 text-[13px] font-semibold text-white transition-colors group-hover:bg-brand-strong sm:px-[22px] sm:py-3 sm:text-[14px]"
         >
-          Cerca
+          {button}
         </span>
       </a>
 
       <div className="mb-9 flex flex-wrap items-center justify-center gap-2.5">
-        <span className="py-2 text-[13px] text-muted">Filtra per distretto:</span>
-        {districts.map((district) => (
+        <span className="py-2 text-[13px] text-muted">{districtsLabel}</span>
+        {Object.entries(content.districts).map(([key, district], i) => (
           <span
-            key={district.label}
-            className={`whitespace-nowrap rounded-full px-4 py-2 text-[13.5px] font-medium text-ink ${district.className}`}
+            key={key}
+            className={`whitespace-nowrap rounded-full px-4 py-2 text-[13.5px] font-medium text-ink ${DISTRICT_TONES[i % DISTRICT_TONES.length]}`}
           >
-            {district.label}
+            {district}
           </span>
         ))}
       </div>

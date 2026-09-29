@@ -1,23 +1,25 @@
-import { onboardingSteps } from "@/lib/content-produttori";
+import { useMessages, useTranslations } from "next-intl";
 
 export function OnboardingSteps() {
+  const t = useTranslations("produttori.onboarding");
+  const { steps } = useMessages().produttori.onboarding;
+
   return (
     <section id="come-funziona" className="scroll-mt-4 bg-ink gutter-x py-16 xl:py-22">
       <div className="mx-auto max-w-[1200px]">
         <div className="mb-10 grid gap-6 lg:mb-13 lg:grid-cols-2 lg:items-end lg:gap-10">
           <h2 className="text-balance font-display text-[32px] leading-[1.08] font-bold tracking-[-0.025em] text-white sm:text-[38px] xl:text-[46px]">
-            Dal tuo catalogo al listino ProteSì in quattro passaggi.
+            {t("title")}
           </h2>
           <p className="max-w-[480px] text-pretty text-[17px] leading-[1.65] text-white/74">
-            Carichi nei formati che già usi. Strutturazione e revisione le seguiamo noi, tu
-            approvi prima della pubblicazione.
+            {t("intro")}
           </p>
         </div>
 
         <ol className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
-          {onboardingSteps.map((step, i) => (
+          {Object.entries(steps).map(([key, step], i) => (
             <li
-              key={step.title}
+              key={key}
               className="rounded-3xl border border-periwinkle/28 bg-white/6 p-8"
             >
               <span

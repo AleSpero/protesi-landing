@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { useMessages, useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-import { ComparisonSection } from "@/components/ComparisonSection";
 import { EmailSignupCta } from "@/components/EmailSignupCta";
 import { FaqSection } from "@/components/FaqSection";
 import { RetailerDocumentSection } from "@/components/rivenditori/RetailerDocumentSection";
@@ -9,31 +10,31 @@ import { RetailerProfileSection } from "@/components/rivenditori/RetailerProfile
 import { RetailerSteps } from "@/components/rivenditori/RetailerSteps";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { rivenditoriHref } from "@/lib/content";
-import {
-  retailerComparison,
-  retailerFaqs,
-  retailerSignupHref,
-} from "@/lib/content-rivenditori";
+import { retailerSignupHref, rivenditoriHref } from "@/lib/links";
 
-const title = "ProteSì per i rivenditori — Il paziente arriva da te con il consiglio in mano";
-const description =
-  "Quando il professionista consiglia un'ortesi, ProteSì indica nel documento le officine più vicine al comune del paziente. Se sei registrato, sei tra quelle.";
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("rivenditori.metadata");
+  const title = t("title");
+  const description = t("description");
 
-export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: { title, description, locale: "it_IT", type: "website", siteName: "ProteSì" },
-  twitter: { card: "summary_large_image", title, description },
-};
+  return {
+    title,
+    description,
+    openGraph: { title, description, locale: "it_IT", type: "website", siteName: "ProteSì" },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
 
 export default function RivenditoriPage() {
+  const t = useTranslations("rivenditori");
+  const { faqs } = useMessages().rivenditori;
+
   return (
     <div className="bg-white">
       <SiteHeader
         current={rivenditoriHref}
-        signupLabel="Registra la tua officina"
-        signupLabelShort="Registrati"
+        signupLabel={t("header.signup")}
+        signupLabelShort={t("header.signupShort")}
         signupHref={retailerSignupHref}
         background="white"
         signupTone="accent"
@@ -43,20 +44,15 @@ export default function RivenditoriPage() {
         <RetailerSteps />
         <RetailerDocumentSection />
         <RetailerProfileSection />
-        <ComparisonSection
-          title="Il paziente sceglie dove andare nei dieci minuti dopo la visita."
-          intro="La maggior parte delle ortesi si acquista lo stesso giorno della prescrizione. Conta chi c'è scritto sul documento."
-          data={retailerComparison}
-        />
         <EmailSignupCta
           id="registrati"
-          title="Fatti trovare dal prossimo paziente."
-          intro="Registra la tua officina in dieci minuti: dal primo consiglio nella tua zona sei già nel documento."
-          buttonLabel="Registra la tua officina"
+          title={t("signup.title")}
+          intro={t("signup.intro")}
+          buttonLabel={t("signup.button")}
           accountType="selling_company"
           tone="accent"
         />
-        <FaqSection items={retailerFaqs} />
+        <FaqSection items={faqs} />
       </main>
       <SiteFooter />
     </div>

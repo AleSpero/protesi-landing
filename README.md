@@ -41,19 +41,48 @@ npm run build
 | `src/app/produttori/page.tsx` | Producers' landing, with its own `metadata` |
 | `src/app/rivenditori/page.tsx` | Retailers' landing, with its own `metadata` |
 | `src/app/globals.css` | Design tokens (`@theme`), gutter scale, base resets |
-| `src/lib/content.ts` | Copy and list data for `/` plus everything shared (nav, link placeholders) |
-| `src/lib/content-produttori.ts` | Copy and list data for `/produttori` |
-| `src/lib/content-rivenditori.ts` | Copy and list data for `/rivenditori` |
+| `messages/it.json` | **All the copy** of every landing — see [Editing the copy](#editing-the-copy) |
+| `src/i18n/request.ts` | next-intl setup: serves `messages/it.json` to the components |
+| `src/global.d.ts` | Types every message key against `messages/it.json` |
+| `src/lib/links.ts` | Every href: app links, sibling landings, nav, placeholders |
 | `src/components/produttori/`, `src/components/rivenditori/` | Sections only that page uses |
 | `src/components/EmailSignupCta.tsx` | Email-capture closing CTA shared by the producers' and retailers' pages |
 | `src/components/BrandLogo.tsx` | ProteSì lockup, traced from the Figma component (node `55:3959`) |
 | `src/components/Hero.tsx` | Headline, search demo, signup CTA and the three-device cluster |
 | `src/components/BrowserFrame.tsx` | A screenshot in a decorative browser window — used by both pages |
 | `src/components/WebAppSection.tsx` | The web app in a browser frame |
-| `src/components/ComparisonSection.tsx` | Three-column comparison; takes `title`, `intro` and `data` per page |
 | `src/components/FaqSection.tsx` | Accordion on native `<details name>` — one open at a time, no JS; takes `items` |
 | `src/components/FeatureGrid.tsx` | Three feature cards; takes `items`, optionally numbered |
 | `public/mockups/` | App screenshots used in the hero and the document section |
+
+## Editing the copy
+
+Every visible string — headlines, paragraphs, buttons, FAQs, image alt texts, SEO
+title and description — lives in [`messages/it.json`](messages/it.json), served by
+[next-intl](https://next-intl.dev). Components hold only layout and read their text by
+key, so changing the copy never means touching a `.tsx` file.
+
+The file is ordered like the site:
+
+| Section | What it holds |
+| --- | --- |
+| `common` | Header, email signup form, FAQ heading, footer — shared by every landing |
+| `home` | `/`, section by section in page order, starting with `metadata` (SEO) |
+| `produttori` | `/produttori`, same layout |
+| `rivenditori` | `/rivenditori`, same layout |
+
+- **Change a text:** edit the string. With `npm run dev` running the page updates live.
+- **Add or remove a list item** (FAQ, feature card, highlight…): add or delete
+  an entry. Lists are objects, not arrays, so every item has a stable name
+  (`faqs.gratuito`); pick any unused name for a new one. Items render in file order.
+- **Inline markup:** `<link>…</link>` and `<login>…</login>` mark the linked words,
+  `<br></br>` is a line break. Keep the tags; only the text between them is copy.
+- **Special characters:** `{` and `}` are placeholders in the ICU message format. To
+  show them literally, wrap them in single quotes: `'{'`.
+
+Keys are type-checked: a component that asks for a key missing from the file fails
+`npm run build`. Adding a language means adding `messages/<locale>.json` and choosing
+the locale in `src/i18n/request.ts`.
 
 ## Notes on fidelity
 
@@ -74,7 +103,7 @@ npm run build
 ## Links into the app
 
 Every signup and login button opens the ProteSì app (Flutter web), built from
-`src/lib/app-links.ts`:
+`src/lib/app-links.ts` and wired up in `src/lib/links.ts`:
 
 | Button | Opens |
 | --- | --- |
@@ -93,8 +122,8 @@ which also keeps a prefilled email out of server logs. The `type` values are the
 `UserType.value`s; the app preselects that type and prefills the email (see
 `protesi-app`: `app_router.dart`, `RegistrationFlowScreen`).
 
-Still placeholders (`#`): `contactHref` (FAQ *Scrivici*, footer *Contatti*) and
-`privacyHref` (footer *Privacy*).
+Still placeholders (`#`) in `src/lib/links.ts`: `contactHref` (FAQ *Scrivici*, footer
+*Contatti*) and `privacyHref` (footer *Privacy*).
 
 ## The hero search field
 

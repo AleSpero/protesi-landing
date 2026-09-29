@@ -1,10 +1,12 @@
+import { useTranslations } from "next-intl";
+
 import { BrandLogo } from "@/components/BrandLogo";
-import { loginHref, nav, signupHref } from "@/lib/content";
+import { loginHref, nav, signupHref } from "@/lib/links";
 
 type SiteHeaderProps = {
   /** Href of the audience page being rendered; its nav item gets the underline. */
   current: (typeof nav)[number]["href"];
-  signupLabel?: string;
+  signupLabel: string;
   /** Shorter label used below `sm`, where a long one would not fit beside the logo. */
   signupLabelShort?: string;
   signupHref?: string;
@@ -21,28 +23,30 @@ const SIGNUP_TONE = {
 
 export function SiteHeader({
   current,
-  signupLabel = "Iscriviti",
+  signupLabel,
   signupLabelShort,
   signupHref: signup = signupHref,
   background = "lavender",
   signupTone = "brand",
 }: SiteHeaderProps) {
+  const t = useTranslations("common.header");
+
   return (
     <header className={background === "white" ? "bg-white" : "bg-lavender"}>
       <div className="mx-auto flex max-w-[1440px] items-center justify-between gutter-x py-[22px]">
-        <a href="#top" aria-label="ProteSì — torna all'inizio" className="block shrink-0">
+        <a href="#top" aria-label={t("homeLinkLabel")} className="block shrink-0">
           {/* 36px on phones so the logo, Accedi and the signup label fit 390px. */}
           <BrandLogo className="h-9 w-auto sm:h-[42px]" />
         </a>
 
         {/* Gaps tighten between lg and xl, where the longest signup label plus
             the three nav items would otherwise overrun the gutter. */}
-        <nav aria-label="Principale" className="flex items-center gap-6 xl:gap-8">
+        <nav aria-label={t("navLabel")} className="flex items-center gap-6 xl:gap-8">
           <ul className="hidden items-center gap-6 lg:flex xl:gap-8">
             {nav.map((item) => {
               const isCurrent = item.href === current;
               return (
-                <li key={item.label}>
+                <li key={item.key}>
                   <a
                     href={item.href}
                     aria-current={isCurrent ? "page" : undefined}
@@ -52,7 +56,7 @@ export function SiteHeader({
                         : "block whitespace-nowrap text-[14.5px] font-medium text-ink transition-colors hover:text-brand"
                     }
                   >
-                    {item.label}
+                    {t(`nav.${item.key}`)}
                   </a>
                 </li>
               );
@@ -65,7 +69,7 @@ export function SiteHeader({
               href={loginHref}
               className="whitespace-nowrap rounded-[10px] border-[1.5px] border-periwinkle px-3.5 py-2 text-[13.5px] font-semibold text-brand transition-colors hover:border-brand sm:px-5 sm:py-2.5 sm:text-[14.5px]"
             >
-              Accedi
+              {t("login")}
             </a>
             <a
               href={signup}

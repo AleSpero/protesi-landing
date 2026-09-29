@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Lato, Plus_Jakarta_Sans } from "next/font/google";
+import { getTranslations } from "next-intl/server";
 
 import "./globals.css";
 
@@ -22,26 +23,30 @@ const lato = Lato({
   preload: false,
 });
 
-const title = "ProteSì — Scrivi la patologia, ottieni l'ausilio giusto";
-const description =
-  "La ricerca semantica di ProteSì attraversa i cataloghi di più aziende e ti restituisce prodotti, codici nomenclatore e il documento di consiglio da dare al paziente.";
+/** The professionals' landing is the site default; the other landings
+ *  override it with their own. */
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("home.metadata");
+  const title = t("title");
+  const description = t("description");
 
-export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: {
+  return {
     title,
     description,
-    locale: "it_IT",
-    type: "website",
-    siteName: "ProteSì",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title,
-    description,
-  },
-};
+    openGraph: {
+      title,
+      description,
+      locale: "it_IT",
+      type: "website",
+      siteName: "ProteSì",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
 
 export default function RootLayout({
   children,

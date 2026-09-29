@@ -1,6 +1,8 @@
+import { useTranslations } from "next-intl";
+
 import { EmailSignupForm } from "@/components/EmailSignupForm";
 import type { AccountType } from "@/lib/app-links";
-import { loginHref } from "@/lib/content";
+import { loginHref } from "@/lib/links";
 
 type EmailSignupCtaProps = {
   id: string;
@@ -26,6 +28,8 @@ export function EmailSignupCta({
   accountType,
   tone = "brand",
 }: EmailSignupCtaProps) {
+  const t = useTranslations("common.emailSignup");
+
   return (
     <section id={id} className="bg-lavender gutter-x py-16 text-center xl:py-22">
       <h2 className="mx-auto mb-4.5 max-w-[760px] text-balance font-display text-[34px] leading-[1.06] font-extrabold tracking-[-0.025em] text-ink sm:text-[42px] xl:text-[50px]">
@@ -37,15 +41,20 @@ export function EmailSignupCta({
       <EmailSignupForm
         accountType={accountType}
         inputId={`${id}-email`}
+        label={t("label")}
+        placeholder={t("placeholder")}
         buttonLabel={buttonLabel}
         toneClassName={TONE[tone]}
       />
 
       <p className="text-[13px] text-muted">
-        Nessun costo di attivazione. Hai già un account?{" "}
-        <a href={loginHref} className="text-brand transition-colors hover:text-accent">
-          Accedi
-        </a>
+        {t.rich("footnote", {
+          login: (chunks) => (
+            <a href={loginHref} className="text-brand transition-colors hover:text-accent">
+              {chunks}
+            </a>
+          ),
+        })}
       </p>
     </section>
   );

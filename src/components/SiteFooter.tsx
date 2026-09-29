@@ -1,17 +1,21 @@
-import { company, contactHref, privacyHref } from "@/lib/content";
+import { useTranslations } from "next-intl";
+
+import { contactHref, privacyHref } from "@/lib/links";
 
 export function SiteFooter() {
+  const t = useTranslations("common.footer");
+
   return (
     <footer className="border-t border-lavender-deep bg-white gutter-x py-10">
       <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-5">
         {/* Each item stays whole; the non-breaking space keeps the dot with the
             item before it, so a wrapped line never starts with "·". */}
         <address className="text-[13px] text-muted not-italic">
-          <span className="whitespace-nowrap">{company.name}</span>
+          <span className="whitespace-nowrap">{t("company.name")}</span>
           {"\u00a0· "}
-          <span className="whitespace-nowrap">P.IVA {company.vat}</span>
+          <span className="whitespace-nowrap">{t("company.vat")}</span>
           {"\u00a0· "}
-          <span className="whitespace-nowrap">{company.address}</span>
+          <span className="whitespace-nowrap">{t("company.address")}</span>
         </address>
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
@@ -20,13 +24,13 @@ export function SiteFooter() {
               href={privacyHref}
               className="text-[13px] text-brand transition-colors hover:text-accent"
             >
-              Privacy
+              {t("privacy")}
             </a>
             <a
               href={contactHref}
               className="text-[13px] text-brand transition-colors hover:text-accent"
             >
-              Contatti
+              {t("contact")}
             </a>
           </nav>
 
@@ -41,7 +45,7 @@ export function SiteFooter() {
             rel="noopener"
             className="group text-[13px] text-muted"
           >
-            made by{" "}
+            {t("credit")}{" "}
             <span className="font-credit font-bold decoration-[#00b0ff] underline-offset-2 group-hover:underline">
               <span className="text-[#101010]">Alessandro</span>{" "}
               <span className="text-[#00b0ff] transition-colors group-hover:text-[#0090d0]">

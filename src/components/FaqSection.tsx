@@ -1,7 +1,9 @@
-import { contactHref, faqs } from "@/lib/content";
+import { useTranslations } from "next-intl";
+
+import { contactHref } from "@/lib/links";
 
 type FaqSectionProps = {
-  items?: readonly { q: string; a: string }[];
+  items: Record<string, { q: string; a: string }>;
 };
 
 /**
@@ -9,27 +11,31 @@ type FaqSectionProps = {
  * like the design, without any client JS — and the answers stay in the HTML
  * for search engines and find-in-page. The first question starts open.
  */
-export function FaqSection({ items = faqs }: FaqSectionProps) {
+export function FaqSection({ items }: FaqSectionProps) {
+  const t = useTranslations("common.faq");
+
   return (
     <section className="bg-white gutter-x py-16 xl:py-24">
       <div className="mx-auto grid max-w-[1200px] items-start gap-10 lg:grid-cols-[1fr_1.6fr] lg:gap-20">
         <div>
           <h2 className="mb-4 text-balance font-display text-[32px] leading-[1.08] font-bold tracking-[-0.025em] text-ink sm:text-[38px] xl:text-[46px]">
-            Domande frequenti
+            {t("title")}
           </h2>
           <p className="text-pretty text-[17px] leading-[1.6] text-body">
-            Non trovi la risposta?{" "}
-            <a href={contactHref} className="text-brand transition-colors hover:text-accent">
-              Scrivici
-            </a>
-            : rispondiamo entro un giorno lavorativo.
+            {t.rich("contact", {
+              link: (chunks) => (
+                <a href={contactHref} className="text-brand transition-colors hover:text-accent">
+                  {chunks}
+                </a>
+              ),
+            })}
           </p>
         </div>
 
         <div className="flex flex-col gap-3">
-          {items.map((faq, i) => (
+          {Object.entries(items).map(([key, faq], i) => (
             <details
-              key={faq.q}
+              key={key}
               name="faq"
               open={i === 0}
               className="group overflow-hidden rounded-2xl bg-lavender"

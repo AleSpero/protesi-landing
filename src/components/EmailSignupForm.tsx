@@ -2,9 +2,13 @@
 
 import { type AccountType, appSignupHref } from "@/lib/app-links";
 
+/* A client component, so its copy arrives as props from EmailSignupCta
+   rather than shipping the messages to the browser. */
 type EmailSignupFormProps = {
   accountType: AccountType;
   inputId: string;
+  label: string;
+  placeholder: string;
   buttonLabel: string;
   toneClassName: string;
 };
@@ -18,6 +22,8 @@ type EmailSignupFormProps = {
 export function EmailSignupForm({
   accountType,
   inputId,
+  label,
+  placeholder,
   buttonLabel,
   toneClassName,
 }: EmailSignupFormProps) {
@@ -33,7 +39,7 @@ export function EmailSignupForm({
       className="mx-auto mb-3.5 flex max-w-[560px] flex-col gap-3 sm:flex-row"
     >
       <label htmlFor={inputId} className="sr-only">
-        Email aziendale
+        {label}
       </label>
       <input
         id={inputId}
@@ -41,7 +47,7 @@ export function EmailSignupForm({
         type="email"
         required
         autoComplete="email"
-        placeholder="La tua email aziendale"
+        placeholder={placeholder}
         className="min-w-0 flex-1 rounded-[14px] border-[1.5px] border-periwinkle bg-white px-5 py-[17px] text-[16px] text-ink outline-none transition-colors focus:border-brand"
       />
       <button

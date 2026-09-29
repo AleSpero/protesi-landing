@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
+import { useMessages, useTranslations } from "next-intl";
+import { getTranslations } from "next-intl/server";
 
-import { ComparisonSection } from "@/components/ComparisonSection";
 import { EmailSignupCta } from "@/components/EmailSignupCta";
 import { FaqSection } from "@/components/FaqSection";
 import { FeatureGrid } from "@/components/FeatureGrid";
@@ -10,52 +11,46 @@ import { ProducerDetailSection } from "@/components/produttori/ProducerDetailSec
 import { ProducerHero } from "@/components/produttori/ProducerHero";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteHeader";
-import { produttoriHref } from "@/lib/content";
-import {
-  producerComparison,
-  producerFaqs,
-  producerFeatures,
-  producerSignupHref,
-} from "@/lib/content-produttori";
+import { producerSignupHref, produttoriHref } from "@/lib/links";
 
-const title = "ProteSì per i produttori — Il tuo catalogo, dove il medico prescrive";
-const description =
-  "ProteSì mostra i tuoi prodotti nel momento in cui il professionista cerca una soluzione per il paziente: per patologia, distretto o codice. Su iOS, Android e web.";
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getTranslations("produttori.metadata");
+  const title = t("title");
+  const description = t("description");
 
-export const metadata: Metadata = {
-  title,
-  description,
-  openGraph: { title, description, locale: "it_IT", type: "website", siteName: "ProteSì" },
-  twitter: { card: "summary_large_image", title, description },
-};
+  return {
+    title,
+    description,
+    openGraph: { title, description, locale: "it_IT", type: "website", siteName: "ProteSì" },
+    twitter: { card: "summary_large_image", title, description },
+  };
+}
 
 export default function ProduttoriPage() {
+  const t = useTranslations("produttori");
+  const { features, faqs } = useMessages().produttori;
+
   return (
     <div className="bg-white">
       <SiteHeader
         current={produttoriHref}
-        signupLabel="Registrati ora"
+        signupLabel={t("header.signup")}
         signupHref={producerSignupHref}
       />
       <main>
         <ProducerHero />
-        <FeatureGrid items={producerFeatures} />
+        <FeatureGrid items={features} numbered />
         <ProducerDetailSection />
         <OnboardingSteps />
         <HomeLogoSection />
-        <ComparisonSection
-          title="Tre modi per farsi trovare. Uno funziona in visita."
-          intro="Il professionista decide in pochi minuti, con il paziente davanti. Conta chi è presente in quel momento."
-          data={producerComparison}
-        />
         <EmailSignupCta
           id="registrati"
-          title="Porta il tuo catalogo in ProteSì."
-          intro="Registra la tua azienda e carica il catalogo: dalla pubblicazione i tuoi prodotti sono in ricerca."
-          buttonLabel="Registrati ora"
+          title={t("signup.title")}
+          intro={t("signup.intro")}
+          buttonLabel={t("signup.button")}
           accountType="product_company"
         />
-        <FaqSection items={producerFaqs} />
+        <FaqSection items={faqs} />
       </main>
       <SiteFooter />
     </div>

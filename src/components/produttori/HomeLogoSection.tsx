@@ -1,8 +1,10 @@
 import Image from "next/image";
-
-import { homeLogoPoints } from "@/lib/content-produttori";
+import { useMessages, useTranslations } from "next-intl";
 
 export function HomeLogoSection() {
+  const t = useTranslations("produttori.homeLogo");
+  const { points } = useMessages().produttori.homeLogo;
+
   return (
     <section className="bg-white gutter-x py-16 xl:py-25">
       <div className="mx-auto grid max-w-[1200px] items-center gap-12 lg:grid-cols-2 lg:gap-20">
@@ -11,7 +13,7 @@ export function HomeLogoSection() {
           <div className="relative h-[calc(522px*var(--s))] w-[calc(562px*var(--s))] shrink-0 overflow-hidden rounded-3xl border border-[#e6e7fb] bg-lavender">
             <Image
               src="/mockups/mockup_protesi_phone_2.png"
-              alt="Home dell'app ProteSì con la sezione Aziende"
+              alt={t("imageAlt")}
               width={1478}
               height={2519}
               sizes="(min-width: 640px) 540px, 330px"
@@ -22,17 +24,16 @@ export function HomeLogoSection() {
 
         <div>
           <h2 className="mb-5 text-balance font-display text-[32px] leading-[1.08] font-bold tracking-[-0.025em] text-ink sm:text-[38px] xl:text-[46px]">
-            Il tuo logo in home, ogni giorno.
+            {t("title")}
           </h2>
 
           <p className="mb-7 max-w-[480px] text-pretty text-[17px] leading-[1.65] text-body">
-            Le aziende partner compaiono nella home di ogni professionista. Un tap sul logo apre
-            il tuo catalogo completo, filtrato per te.
+            {t("intro")}
           </p>
 
           <ul className="flex flex-col gap-3">
-            {homeLogoPoints.map((point) => (
-              <li key={point} className="text-[15px] text-charcoal">
+            {Object.entries(points).map(([key, point]) => (
+              <li key={key} className="text-[15px] text-charcoal">
                 <span aria-hidden="true">— </span>
                 {point}
               </li>

@@ -1,0 +1,406 @@
+{
+  "common": {
+    "header": {
+      "homeLinkLabel": "ProteSì — torna all'inizio",
+      "navLabel": "Principale",
+      "nav": {
+        "professionisti": "Per i professionisti",
+        "produttori": "Per i produttori",
+        "rivenditori": "Per i rivenditori"
+      },
+      "login": "Accedi"
+    },
+    "emailSignup": {
+      "label": "Email aziendale",
+      "placeholder": "La tua email aziendale",
+      "footnote": "Hai già un account? <login>Accedi</login>"
+    },
+    "faq": {
+      "title": "Domande frequenti",
+      "contact": "Non trovi la risposta? <link>Scrivici</link>: e ti risponderemo a breve."
+    },
+    "footer": {
+      "company": {
+        "name": "Nolides Srl",
+        "vat": "P.IVA 04129580124",
+        "address": "Via Ernesto Cairoli, 5, Varese"
+      },
+      "privacy": "Privacy",
+      "contact": "Contatti",
+      "credit": "made by"
+    }
+  },
+
+  "home": {
+    "metadata": {
+      "title": "ProteSì — Infiniti cataloghi a portata di un click",
+      "description": "Cerca l'ausilio giusto per il tuo paziente. Con la ricerca ibrida di ProteSì, con IA integrata, puoi cercare per patologia, per prodotto o per codice nomenclatore."
+    },
+    "header": {
+      "signup": "Iscriviti"
+    },
+    "signupCta": "Crea il tuo account",
+    "hero": {
+      "title": "Infiniti cataloghi a portata di un click",
+      "intro": "Cerca l'ausilio giusto per il tuo paziente. Con la ricerca ibrida di ProteSì, con IA integrata, puoi cercare per patologia, per prodotto o per codice nomenclatore.",
+      "search": {
+        "label": "Crea un account per cercare in ProteSì",
+        "button": "Cerca",
+        "queries": {
+          "cervicale": "collare cervicale per cervicalgia",
+          "ginocchio": "tutore per ginocchio dopo LCA",
+          "piede": "tutore per piede equino",
+          "tronco": "corsetto iperestensore per il tronco",
+          "codice": "06.03.09.095"
+        },
+        "districtsLabel": "Filtra per distretto:",
+        "districts": {
+          "cervicale": "Cervicale",
+          "artiSuperiori": "Arti superiori",
+          "artiInferiori": "Arti inferiori",
+          "tronco": "Tronco",
+          "piede": "Piede"
+        }
+      },
+      "signupNote": "Gratis per i professionisti sanitari.",
+      "imageAlt": {
+        "results": "Risultati di ricerca in ProteSì",
+        "home": "Home di ProteSì con ricerca per categoria e aziende",
+        "nomenclator": "Ricerca nel nomenclatore in ProteSì"
+      }
+    },
+    "features": {
+      "ricercaIbrida": {
+        "title": "Ricerca ibrida",
+        "body": "Nome dell'ausilio, patologia da trattare o frase in linguaggio naturale: la ricerca combina testo e significato, così non devi conoscere la nomenclatura per trovare il prodotto."
+      },
+      "distretti": {
+        "title": "togli questi tre riquadri completamente",
+        "body": "Invia via email al tuo paziente un documento personalizzato con i prodotti consigliati per lui - tramite selezione multipla puoi creare un file pdf con tutti i prodotti adatti al tuo paziente e stamparlo o inviarlo facilmente via email."
+      },
+      "multiAzienda": {
+        "title": "Catalogo multi-azienda",
+        "body": "Prodotti di produttori diversi confrontabili nella stessa lista, con foto, classificazione ISO e codice quando disponibile."
+      }
+    },
+    "document": {
+      "title": "Porta il nomenclatore sempre con te",
+      "intro": "Trova rapidamente il codice che stavi cercando e verifica le indicazioni di prescrivibilità.\n\nVerifica se è prescrivibile da Medico di Medicina Generale tramite apposito flag.",
+      "highlights": {
+        "selezioneMultipla": {
+          "title": "togli",
+          "body": "Più ausili in un unico consiglio"
+        },
+        "codicePrescrittivo": {
+          "title": "togli",
+          "body": "Nomenclatore, dove disponibile"
+        },
+        "preferiti": {
+          "title": "togli",
+          "body": "I prodotti che consigli più spesso"
+        },
+        "schedaCompleta": {
+          "title": "togli",
+          "body": "Produttore, ISO, distretto, indicazioni"
+        }
+      },
+      "imageAlt": "Scheda di dettaglio di un ausilio in ProteSì"
+    },
+    "webApp": {
+      "title": "Salva i prodotti e i codici che usi più spesso",
+      "intro": "Da portale web o tramite app, salva i prodotti e i codici di nomenclatore che utilizzi più spesso. Sempre a tua disposizione!",
+      "browserUrl": "app.protesi.it",
+      "imageAlt": "Home di ProteSì da browser"
+    },
+    "audience": {
+      "app": {
+        "title": "Gratis, sul telefono e da browser",
+        "intro": "Scarica l'app su iOS o Android, oppure usa ProteSì dal web durante la visita.",
+        "storeBadges": {
+          "ios": "App Store — iOS",
+          "android": "Google Play — Android"
+        },
+        "cta": "Iscriviti e inizia"
+      },
+      "clinicians": {
+        "title": "Pensato per chi visita",
+        "intro": "Medici specialisti, Medici di Medicina Generale, Professionisti sanitari (Terapisti occupazionali, Fisioterapisti, Tecnici ortopedici...)",
+        "benefits": {
+          "patologia": "(carattere check al posto di bullet)Disponibile su Portale Web ",
+          "documento": "(carattere check al posto di bullet)Disponibile come App Mobile",
+          "nomenclatore": "(togli bullet point) Che tu sia in ambulatorio o al letto del paziente, trova subito gli ausili giusti per lui."
+        },
+        "cta": "Scopri come funziona"
+      }
+    },
+    "finalCta": {
+      "title": "Pronto a cominciare?",
+      "intro": "Crea il tuo account in due minuti.",
+      "login": "Hai già un account? <login>Accedi</login>"
+    },
+    "faqs": {
+      "gratuito": {
+        "q": "ProteSì è gratuito per i professionisti?",
+        "a": "Sì, tutte le funzionalità sono disponibili gratuitamente all'iscrizione."
+      },
+      "prescrizione": {
+        "q": "Il documento generato vale come prescrizione?",
+        "a": "No. È un consiglio informativo per il paziente con prodotto, produttore ed altre informazioni utili. La prescrizione resta sui canali previsti dal SSN."
+      },
+      "catalogo": {
+        "q": "Quali prodotti trovo nel catalogo?",
+        "a": "Ortesi e ausili delle aziende partner, con foto, scheda tecnica, codice nomenclatore associato (se presente), distretto e patologie compatibili."
+      },
+      "codici": {
+        "q": "togli questo punto",
+        "a": "No. Puoi scrivere la patologia o il nome comune dell'ausilio: la ricerca combina testo e significato e ti mostra il codice accanto al prodotto."
+      },
+      "datiPazienti": {
+        "q": "I dati dei miei pazienti vengono salvati?",
+        "a": "No, non chiediamo né conserviamo dati clinici del paziente."
+      }
+    }
+  },
+
+  "produttori": {
+    "metadata": {
+      "title": "ProteSì per i produttori — Fatti conoscere dai medici prescrittori di tutta Italia",
+      "description": "Metti a disposizione dei professionisti il tuo catalogo, completo di schede tecniche e codici di prescrizione."
+    },
+    "header": {
+      "signup": "Registrati ora"
+    },
+    "hero": {
+      "title": "Una vetrina digitale, sempre aggiornata.",
+      "intro": "Fatti conoscere dai medici prescrittori di tutta Italia: metti a disposizione dei professionisti il tuo catalogo, completo di schede tecniche e codici di prescrizione.",
+      "signup": "Registrati ora",
+      "howItWorks": "Come funziona",
+      "browserUrl": "app.protesi.it/ricerca?q=collare+cervicale",
+      "imageAlt": "Risultati di ricerca ProteSì da browser con filtro per brand",
+      "badge": {
+        "label": "Filtri",
+        "text": "Filtra per brand"
+      }
+    },
+    "features": {
+      "ricerchePerPatologia": {
+        "title": "Il nomenclatore sempre a portata di un click",
+        "body": "Codici di prescrizione e specifiche di prescrivibilità … tutto il nomenclatore in un’unica soluzione smart."
+      },
+      "schedaCompleta": {
+        "title": "Valorizza gli studi relativi ai tuoi prodotti",
+        "body": "Inserisci gli studi condotti sui tuoi prodotti, permettendo ai professionisti del settore di conoscere il tuo lavoro"
+      },
+      "documentoPaziente": {
+        "title": "Amplia la tua rete di contatti",
+        "body": "Inserisci tra le informazioni della tua azienda i contatti dei tuoi responsabili regionali, permettendo ai professionisti di mettersi direttamente in contatto con te."
+      }
+    },
+    "detail": {
+      "title": "Dimentica i cataloghi cartacei",
+      "intro": "Tutti i tuoi prodotti, completi di scheda tecnica, a disposizione dei professionisti - tramite selezione multipla il medico può creare un file pdf con tutti i prodotti adatti al paziente e stamparlo o inviarlo facilmente via email.",
+      "highlights": {
+        "produttore": {
+          "title": "Nome Commerciale",
+          "body": "togli spazio"
+        },
+        "patologie": {
+          "title": "Patologie compatibili",
+          "body": ""
+        },
+        "alternative": {
+          "title": "Codice Nomenclatore",
+          "body": ""
+        },
+        "specifiche": {
+          "title": "Specifiche tecniche",
+          "body": ""
+        }
+      },
+      "imageAlt": {
+        "web": "Scheda prodotto ProteSì da browser con produttore in evidenza",
+        "app": "Scheda prodotto nell'app ProteSì"
+      }
+    },
+    "onboarding": {
+      "title": "Rendi il tuo catalogo digitale in quattro passaggi.",
+      "intro": "",
+      "steps": {
+        "registrazione": {
+          "title": "Registrati al portale",
+          "body": "Crei l'account con i dati della tua azienda."
+        },
+        "caricamento": {
+          "title": "Carica il catalogo",
+          "body": "Supportiamo il caricamento di file PDF ed Excel nativamente. Contattaci per altre alternative."
+        },
+        "strutturazione": {
+          "title": "Strutturazione e revisione",
+          "body": "In poco tempo inseriremo i tuoi prodotti all'interno della piattaforma."
+        },
+        "pubblicazione": {
+          "title": "Pubblicazione in ProteSì",
+          "body": "I tuoi prodotti entrano nella piattaforma e diventano subito disponibili su iOS, Android e web."
+        }
+      }
+    },
+    "homeLogo": {
+      "title": "Diventa partner e fatti conoscere.",
+      "intro": "Pensato per chi visita: Medici specialisti, Medici di Medicina Generale, Professionisti sanitari (Terapisti occupazionali, Fisioterapisti, Tecnici ortopedici...)",
+      "points": {
+        "paginaAzienda": "(carattere check al posto di bullet)Disponibile su Portale Web",
+        "appEWeb": "(carattere check al posto di bullet)Disponibile su App Mobile",
+        "datiAggregati": "togli questo"
+      },
+      "imageAlt": "Home dell'app ProteSì con la sezione Aziende"
+    },
+    "signup": {
+      "title": "Porta il tuo catalogo in ProteSì.",
+      "intro": "Registra la tua azienda e carica il catalogo.",
+      "button": "Registrati ora"
+    },
+    "faqs": {
+      "costi": {
+        "q": "Quanto costa essere presenti in ProteSì? (nascondi domanda e risposta)",
+        "a": "La registrazione e il caricamento del catalogo non hanno costi di attivazione. Il piano dipende dal numero di prodotti pubblicati e dai servizi di visibilità scelti: ti inviamo il listino dopo la registrazione."
+      },
+      "formato": {
+        "q": "In quale formato devo inviare il catalogo?",
+        "a": "La piattaforma supporta nativamente il caricamento di file PDF ed Excel. Per altri formati ti preghiamo di contattarci."
+      },
+      "tempi": {
+        "q": "Quanto tempo passa dal caricamento alla pubblicazione?",
+        "a": "Dipende dalla dimensione del catalogo. In media ci vogliono dai 5 ai 10 giorni lavorativi."
+      },
+      "aggiornamenti": {
+        "q": "Posso aggiornare le informazioni dei prodotti dopo la pubblicazione?",
+        "a": "Sì. Contattaci ed il nostro staff provvederà alle modifiche."
+      },
+      "visibilita": {
+        "q": "Chi vede i miei prodotti?",
+        "a": "Professionisti sanitari registrati: Medici specialisti (Fisiatri, Ortopedici, Neurochirurghi...), Medici di Medicina Generale, Terapisti occupazionali, Fisioterapisti, Tecnici ortopedici e tutti i professionisti sanitari che operano nell'ambito di prescrizione ausili."
+      }
+    }
+  },
+
+  "rivenditori": {
+    "metadata": {
+      "title": "ProteSì per i rivenditori — Fatti conoscere nella tua zona",
+      "description": "Tramite il portale ProteSì il professionista sanitario potrà creare un documento personalizzato per il paziente, con i prodotti consigliati per lui e le ortopedie sanitarie più vicine nella zona."
+    },
+    "header": {
+      "signup": "Registra la tua officina",
+      "signupShort": "Registrati"
+    },
+    "hero": {
+      "title": "Il nuovo portale digitale per la ricerca di ausili ed ortesi.",
+      "intro": {
+        "catalogo": "",
+        "documento": ""
+      },
+      "signup": "Registra la tua officina",
+      "howItWorks": "Come funziona",
+      "imageAlt": "Anteprima del documento di consiglio in ProteSì",
+      "nearby": {
+        "title": "Dove trovarlo · Padova",
+        "shops": {
+          "tuaOfficina": {
+            "name": "La tua officina",
+            "distance": "1,2 km"
+          },
+          "ortopediaCentro": {
+            "name": "Ortopedia Centro",
+            "distance": "3,8 km"
+          },
+          "sanitariaEuganea": {
+            "name": "Sanitaria Euganea",
+            "distance": "6,1 km"
+          }
+        }
+      }
+    },
+    "steps": {
+      "title": "Fatti trovare dal prossimo paziente.",
+      "items": {
+        "consiglio": {
+          "title": "Il medico consiglia l'ausilio",
+          "body": "Durante la visita cerca il prodotto in ProteSì, lo aggiunge al documento e inserisce il comune del paziente."
+        },
+        "officineVicine": {
+          "title": "Il documento indica le officine vicine",
+          "body": "Accanto al prodotto compaiono i punti vendita registrati più vicini, con indirizzo, orari e contatti. Tu sei uno di questi."
+        },
+        "pazienteInformato": {
+          "title": "Il paziente arriva da te",
+          "body": "ProteSì ti aiuta a raggiungere potenziali clienti."
+        }
+      }
+    },
+    "document": {
+      "title": "Dallo studio medico al tuo negozio.",
+      "intro": "Tramite il portale ProteSì il professionista sanitario potrà creare un documento personalizzato per il paziente, con i prodotti consigliati per lui e le ortopedie sanitarie più vicine nella zona.",
+      "highlights": {
+        "nomeECodice": {
+          "title": "Prodotti consigliati",
+          "body": "togli"
+        },
+        "ssn": {
+          "title": "Contatti",
+          "body": ""
+        },
+        "officineVicine": {
+          "title": "Negozi vicini",
+          "body": ""
+        },
+        "pdfOEmail": {
+          "title": "Indirizzo ed orari di apertura",
+          "body": ""
+        }
+      },
+      "imageAlt": {
+        "web": "Home di ProteSì da browser con documento in preparazione",
+        "app": "Home dell'app ProteSì"
+      }
+    },
+    "profile": {
+      "title": "Non ti basta?",
+      "intro": "Fatti conoscere dai medici della tua zona: diventa partner e promuovi la tua attività con un pop-up.",
+      "points": {
+        "visibilitaLocale": "Visibile a rotazione dai medici della tua provincia.",
+        "marchi": "Disponibile su portale web",
+        "riepilogo": "Disponibile su App Mobile"
+      },
+      "imageAlt": {
+        "results": "Risultati di ricerca nell'app ProteSì",
+        "detail": "Scheda prodotto nell'app ProteSì"
+      }
+    },
+    "signup": {
+      "title": "Pronto a cominciare?",
+      "intro": "Registra il tuo negozio in cinque minuti.",
+      "button": "Registrati"
+    },
+    "faqs": {
+      "sceltaOfficina": {
+        "q": "TOGLI SEZIONE DOMANDE FREQUENTICome viene scelto il negozio che compare nel documento?",
+        "a": "Per distanza dal comune indicato dal professionista per il paziente. Compaiono le officine registrate più vicine."
+      },
+      "costi": {
+        "q": "togli questa",
+        "a": "La registrazione non ha costi di attivazione. In futuro potremmo attivare pacchetti pubblicitari, quindi resta sintonizzato."
+      },
+      "magazzino": {
+        "q": "Devo avere a magazzino tutti i prodotti del catalogo?",
+        "a": "No. Nella scheda indichi i marchi e le categorie che tratti: il documento ti mostra solo quando il consiglio riguarda ausili compatibili con la tua offerta."
+      },
+      "cosaVedeIlPaziente": {
+        "q": "Cosa vede il paziente del mio negozio?",
+        "a": "Nome, indirizzo, orari, contatti e i servizi che hai indicato: su misura, convenzione ASL, consegna a domicilio. Il paziente sceglie da lì dove andare."
+      },
+      "piuPuntiVendita": {
+        "q": "togli",
+        "a": "Sì. Ogni punto vendita ha la sua scheda e il suo comune di riferimento, gestiti dallo stesso account."
+      }
+    }
+  }
+}
