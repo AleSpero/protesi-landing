@@ -20,10 +20,10 @@ export function ProducerSearchSection() {
         <div className="relative">
           <BrowserFrame
             url={t("browserUrl")}
-            src="/mockups/web_search_carrozzina.webp"
+            src="/mockups/web_search_carrozzina_hd.png"
             alt={t("imageAlt")}
-            width={1786}
-            height={1221}
+            width={2400}
+            height={1904}
             sizes="(min-width: 1288px) 1158px, 100vw"
           />
 

@@ -18,10 +18,10 @@ export function WebAppSection() {
 
         <BrowserFrame
           url={t("browserUrl")}
-          src="/mockups/web_home_preferiti.png"
+          src="/mockups/web_home_hd.png"
           alt={t("imageAlt")}
-          width={1785}
-          height={1225}
+          width={2400}
+          height={1904}
           sizes="(min-width: 1288px) 1158px, 100vw"
         />
       </div>

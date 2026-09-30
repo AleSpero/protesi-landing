@@ -58,6 +58,7 @@ npm run build
 | `src/components/ContactSection.tsx` | The FAQ's "Scrivici" line, also used alone on `/rivenditori`, which has no FAQ |
 | `src/components/FeatureGrid.tsx` | Three feature cards; takes `items`, optionally numbered |
 | `public/mockups/` | App screenshots and mockups used across the three pages |
+| `public/registration-complete.html` | Standalone page the signup confirmation email lands on, served at `/registration-complete.html`; its *Accedi* link is hardcoded to the app's login |
 
 ## Editing the copy
 

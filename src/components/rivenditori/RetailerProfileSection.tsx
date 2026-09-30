@@ -30,10 +30,10 @@ export function RetailerProfileSection() {
         {/* The partner pop-up as the app shows it. */}
         <div className="flex justify-center">
           <Image
-            src="/mockups/popup_pubblicita.png"
+            src="/mockups/mockup_popup_pubblicita.png"
             alt={t("imageAlt")}
-            width={1000}
-            height={1704}
+            width={1479}
+            height={2521}
             sizes="(min-width: 1280px) 290px, (min-width: 640px) 270px, 230px"
             className="block h-auto w-[230px] sm:w-[270px] xl:w-[290px]"
           />
