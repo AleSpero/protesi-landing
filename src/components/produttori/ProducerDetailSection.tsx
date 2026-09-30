@@ -33,6 +33,7 @@ export function ProducerDetailSection() {
               width={1430}
               height={1045}
               sizes="(min-width: 640px) 900px, 540px"
+              quality={90}
               className="block h-auto w-[calc(900px*var(--s))] max-w-none ml-[calc(-40px*var(--s))]"
             />
             <Image
