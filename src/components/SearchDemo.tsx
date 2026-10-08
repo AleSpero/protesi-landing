@@ -51,6 +51,8 @@ export function SearchDemo({ content }: SearchDemoProps) {
     <>
       <a
         href={signupHref}
+        data-event="Signup"
+        data-placement="hero"
         aria-label={label}
         className="group mx-auto mb-5 flex max-w-[811px] items-center gap-3 rounded-[20px] border-[1.5px] border-periwinkle bg-white px-4 py-4 text-left shadow-search transition-colors hover:border-brand focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand sm:gap-[18px] sm:px-6 sm:py-5"
       >

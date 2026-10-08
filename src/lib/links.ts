@@ -12,9 +12,11 @@ export const loginHref = appLoginHref;
 /* PLACEHOLDERS — pages that don't exist yet. They point at `#` so nothing 404s. */
 export const contactHref = "#";
 export const privacyHref = "#";
-/** The app's store listings, behind the badges on `/`. */
-export const appStoreHref = "#";
-export const playStoreHref = "#";
+/** The app's store listings, behind the badges on `/`. Set in the Vercel
+ *  project's environment variables (then redeploy), so they go live without a
+ *  code change; until then each badge points at `#`. */
+export const appStoreHref = process.env.NEXT_PUBLIC_APP_STORE_URL || "#";
+export const playStoreHref = process.env.NEXT_PUBLIC_PLAY_STORE_URL || "#";
 
 /** The sibling audience landings. */
 export const produttoriHref = "/produttori";

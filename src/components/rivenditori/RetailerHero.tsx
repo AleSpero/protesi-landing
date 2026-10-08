@@ -27,6 +27,8 @@ export function RetailerHero() {
           <div className="flex flex-wrap gap-3.5">
             <a
               href={retailerSignupHref}
+              data-event="Signup"
+              data-placement="hero"
               className="inline-block rounded-[12px] bg-accent px-8 py-4 text-[16px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-accent-strong"
             >
               {t("signup")}

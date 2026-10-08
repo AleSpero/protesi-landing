@@ -73,6 +73,8 @@ export function SiteHeader({
             </a>
             <a
               href={signup}
+              data-event="Signup"
+              data-placement="header"
               className={`whitespace-nowrap rounded-[10px] px-3.5 py-[9px] text-[13.5px] font-semibold text-white transition-colors sm:px-5 sm:py-[11px] sm:text-[14.5px] ${SIGNUP_TONE[signupTone]}`}
             >
               {signupLabelShort ? (

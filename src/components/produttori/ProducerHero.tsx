@@ -20,6 +20,8 @@ export function ProducerHero() {
         <div className="mb-14 flex flex-wrap justify-center gap-3.5">
           <a
             href={producerSignupHref}
+            data-event="Signup"
+            data-placement="hero"
             className="inline-block rounded-[12px] bg-brand px-8 py-4 text-[16px] font-semibold whitespace-nowrap text-white transition-colors hover:bg-brand-strong"
           >
             {t("signup")}

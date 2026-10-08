@@ -129,6 +129,28 @@ which also keeps a prefilled email out of server logs. The `type` values are the
 Still placeholders (`#`) in `src/lib/links.ts`: `contactHref` (FAQ *Scrivici*, footer
 *Contatti*) and `privacyHref` (footer *Privacy*).
 
+The App Store and Google Play badges on `/` read `NEXT_PUBLIC_APP_STORE_URL` and
+`NEXT_PUBLIC_PLAY_STORE_URL`, and point at `#` while those are unset. To publish a
+listing, add the variable in the Vercel project (Settings → Environment Variables,
+Production) and redeploy the latest production deployment; no code change is needed.
+
+## Analytics
+
+Vercel Web Analytics: `<Analytics />` in the root layout records page views, with no
+cookies. The three landings are the three audiences, so the dashboard's page filter
+splits visitors, referrers and devices per audience.
+
+Clicks are custom events, sent by one listener in `src/instrumentation-client.ts` for
+every link marked `data-event`:
+
+| Event | Sent by | Property |
+| --- | --- | --- |
+| `Signup` | every signup link, and the email forms | `placement`: `header`, `hero`, `audience` or `final` |
+| `App Store`, `Google Play` | the store badges on `/` | — |
+
+To track another link, give it `data-event="Name"` and, optionally, `data-placement`.
+Vercel records custom events on the Pro plan only; on Hobby you get the page views.
+
 ## The hero search field
 
 It is not a working search — it is a link into signup that looks like the in-app field,

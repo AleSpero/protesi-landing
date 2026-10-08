@@ -1,5 +1,7 @@
 "use client";
 
+import { track } from "@vercel/analytics";
+
 import { type AccountType, appSignupHref } from "@/lib/app-links";
 
 /* A client component, so its copy arrives as props from EmailSignupCta
@@ -34,6 +36,8 @@ export function EmailSignupForm({
       onSubmit={(event) => {
         event.preventDefault();
         const email = new FormData(event.currentTarget).get("email")?.toString().trim();
+        // The same event the signup links send (see instrumentation-client.ts).
+        track("Signup", { placement: "final" });
         window.location.assign(appSignupHref(accountType, email));
       }}
       className="mx-auto mb-3.5 flex max-w-[560px] flex-col gap-3 sm:flex-row"

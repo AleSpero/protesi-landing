@@ -23,7 +23,7 @@ export function AudienceSection() {
           {/* The official Italian badges (Apple marketing toolbox, Google Play
               badge generator), shown at the same height. */}
           <div className="mb-7 flex flex-wrap items-center gap-3">
-            <a href={appStoreHref} className="block">
+            <a href={appStoreHref} data-event="App Store" className="block">
               <Image
                 src="/badges/app-store-it.svg"
                 alt={t("app.storeBadges.ios")}
@@ -32,7 +32,7 @@ export function AudienceSection() {
                 className="block h-11 w-auto"
               />
             </a>
-            <a href={playStoreHref} className="block">
+            <a href={playStoreHref} data-event="Google Play" className="block">
               <Image
                 src="/badges/google-play-it.png"
                 alt={t("app.storeBadges.android")}
@@ -46,6 +46,8 @@ export function AudienceSection() {
 
           <a
             href={signupHref}
+            data-event="Signup"
+            data-placement="audience"
             className="inline-block rounded-[12px] bg-white px-7 py-[15px] text-[15px] font-semibold whitespace-nowrap text-[#101010] transition-colors hover:bg-lavender-deep"
           >
             {t("app.cta")}
