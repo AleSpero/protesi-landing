@@ -6,6 +6,18 @@
       "runtimeExecutable": "npm",
       "runtimeArgs": ["run", "dev"],
       "port": 3000
+    },
+    {
+      "name": "app-preview-base",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "5180", "--bind", "127.0.0.1", "--directory", "/private/tmp/claude-501/-Users-alespero-Projects-Freelancing-Protesi-protesi-landing/bf306f23-abe7-4b31-b039-6fa5e159ca6d/scratchpad/preview-base"],
+      "port": 5180
+    },
+    {
+      "name": "app-preview-new",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "5181", "--bind", "127.0.0.1", "--directory", "/private/tmp/claude-501/-Users-alespero-Projects-Freelancing-Protesi-protesi-landing/bf306f23-abe7-4b31-b039-6fa5e159ca6d/scratchpad/preview-new"],
+      "port": 5181
     }
   ]
 }
