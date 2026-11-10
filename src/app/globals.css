@@ -66,6 +66,12 @@
     scroll-behavior: smooth;
   }
 
+  /* Tailwind v4's preflight leaves buttons with the default arrow cursor. */
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
   body {
     background: #ffffff;
     color: var(--color-body);

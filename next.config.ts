@@ -8,6 +8,15 @@ const nextConfig: NextConfig = {
   // 90 is for screenshots full of small text (browser frames, the patient
   // document), which blur at the default 75.
   images: { qualities: [75, 90] },
+  // The legal documents are static pages in public/ (see public/legal/);
+  // these serve them without the .html, which also keeps working.
+  async rewrites() {
+    return [
+      { source: "/privacy-policy", destination: "/privacy-policy.html" },
+      { source: "/cookie-policy", destination: "/cookie-policy.html" },
+      { source: "/termini-e-condizioni", destination: "/termini-e-condizioni.html" },
+    ];
+  },
 };
 
 // Loads src/i18n/request.ts, which serves the copy in messages/it.json.

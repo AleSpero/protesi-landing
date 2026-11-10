@@ -33,8 +33,40 @@
         "address": "Via Ernesto Cairoli, 5, Varese"
       },
       "privacy": "Privacy",
+      "cookies": "Cookie",
+      "terms": "Termini",
+      "cookiePreferences": "Preferenze cookie",
       "contact": "Contatti",
       "credit": "made by"
+    },
+    "cookieConsent": {
+      "banner": {
+        "label": "Consenso ai cookie",
+        "title": "Cookie e statistiche",
+        "text": "Usiamo solo i cookie tecnici necessari al sito. Se acconsenti, misuriamo anche le visite in forma aggregata con Vercel Web Analytics, che non salva nulla sul tuo dispositivo. Leggi la <link>cookie policy</link>.",
+        "reject": "Rifiuta",
+        "accept": "Accetta",
+        "customize": "Personalizza",
+        "close": "Chiudi e rifiuta"
+      },
+      "preferences": {
+        "title": "Preferenze cookie",
+        "intro": "Scegli quali strumenti attivare su questo sito. Puoi cambiare idea quando vuoi dal link «Preferenze cookie» in fondo alla pagina.",
+        "close": "Chiudi",
+        "necessary": {
+          "title": "Necessari",
+          "status": "Sempre attivi",
+          "text": "Fanno funzionare il sito e ricordano le tue scelte sui cookie. Non si possono disattivare."
+        },
+        "statistics": {
+          "title": "Statistiche",
+          "text": "Ci dicono in forma aggregata quante persone visitano le pagine, da dove arrivano e quali pulsanti usano, così possiamo migliorarle. Usiamo Vercel Web Analytics, che non salva nulla sul tuo dispositivo."
+        },
+        "rejectAll": "Rifiuta tutti",
+        "save": "Salva le scelte",
+        "acceptAll": "Accetta tutti",
+        "more": "Maggiori informazioni nella <cookie>Cookie Policy</cookie> e nella <privacy>Privacy Policy</privacy>."
+      }
     }
   },
 

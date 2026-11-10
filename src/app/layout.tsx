@@ -1,7 +1,8 @@
-import { Analytics } from "@vercel/analytics/next";
 import type { Metadata } from "next";
 import { Inter, Lato, Plus_Jakarta_Sans } from "next/font/google";
 import { getTranslations } from "next-intl/server";
+
+import { CookieConsent } from "@/components/CookieConsent";
 
 import "./globals.css";
 
@@ -56,7 +57,9 @@ export default function RootLayout({
     <html lang="it" className={`${inter.variable} ${jakarta.variable} ${lato.variable}`}>
       <body className="font-sans antialiased">
         {children}
-        <Analytics />
+        {/* Banner and preferences; also mounts Vercel Web Analytics, only
+            once the visitor accepts statistics. */}
+        <CookieConsent />
       </body>
     </html>
   );

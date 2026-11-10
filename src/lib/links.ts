@@ -11,7 +11,12 @@ export const loginHref = appLoginHref;
 
 /* PLACEHOLDERS — pages that don't exist yet. They point at `#` so nothing 404s. */
 export const contactHref = "#";
-export const privacyHref = "#";
+
+/** The legal documents: static pages in public/, served without the .html
+ *  by the rewrites in next.config.ts. */
+export const privacyHref = "/privacy-policy";
+export const cookiePolicyHref = "/cookie-policy";
+export const termsHref = "/termini-e-condizioni";
 /** The app's store listings, behind the badges on `/`. Set in the Vercel
  *  project's environment variables (then redeploy), so they go live without a
  *  code change; until then each badge points at `#`. */

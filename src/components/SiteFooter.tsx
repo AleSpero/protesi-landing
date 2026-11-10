@@ -1,6 +1,8 @@
 import { useTranslations } from "next-intl";
 
-import { contactHref, privacyHref } from "@/lib/links";
+import { contactHref, cookiePolicyHref, privacyHref, termsHref } from "@/lib/links";
+
+const LINK = "text-[13px] text-brand transition-colors hover:text-accent";
 
 export function SiteFooter() {
   const t = useTranslations("common.footer");
@@ -19,17 +21,21 @@ export function SiteFooter() {
         </address>
 
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-          <nav className="flex gap-6">
-            <a
-              href={privacyHref}
-              className="text-[13px] text-brand transition-colors hover:text-accent"
-            >
+          <nav className="flex flex-wrap gap-x-6 gap-y-2">
+            <a href={privacyHref} className={LINK}>
               {t("privacy")}
             </a>
-            <a
-              href={contactHref}
-              className="text-[13px] text-brand transition-colors hover:text-accent"
-            >
+            <a href={cookiePolicyHref} className={LINK}>
+              {t("cookies")}
+            </a>
+            <a href={termsHref} className={LINK}>
+              {t("terms")}
+            </a>
+            {/* Opened by the listener in CookieConsentClient. */}
+            <button type="button" data-cookie-preferences className={LINK}>
+              {t("cookiePreferences")}
+            </button>
+            <a href={contactHref} className={LINK}>
               {t("contact")}
             </a>
           </nav>
