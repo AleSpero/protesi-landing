@@ -133,10 +133,25 @@ which also keeps a prefilled email out of server logs. The `type` values are the
 Still a placeholder (`#`) in `src/lib/links.ts`: `contactHref` (FAQ *Scrivici*, footer
 *Contatti*).
 
-The App Store and Google Play badges on `/` read `NEXT_PUBLIC_APP_STORE_URL` and
-`NEXT_PUBLIC_PLAY_STORE_URL`, and point at `#` while those are unset. To publish a
-listing, add the variable in the Vercel project (Settings → Environment Variables,
-Production) and redeploy the latest production deployment; no code change is needed.
+The App Store and Google Play badges on `/` link to the app's store listings
+(defaults in `src/lib/links.ts`). To point them elsewhere without a code change, set
+`NEXT_PUBLIC_APP_STORE_URL` / `NEXT_PUBLIC_PLAY_STORE_URL` in the Vercel project
+(Settings → Environment Variables, Production) and redeploy.
+
+### QR code: `/scarica`
+
+Printed QR codes encode `https://<landing domain>/scarica`, which sends each phone to
+its own store (`src/app/scarica/route.ts`):
+
+| visitor | lands on |
+|---|---|
+| iPhone, iPad | App Store |
+| Android | Google Play |
+| computer | the badges card on `/` (`/#scarica`) |
+
+It reads the User-Agent. An iPad on iPadOS 13+ claims to be a Mac, so a "Mac" gets a
+tiny page that checks for a touchscreen in the browser and then picks the App Store or
+the badges. The QR never needs reprinting: change the store links, not the code.
 
 ## Analytics
 

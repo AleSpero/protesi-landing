@@ -11,7 +11,11 @@ export function AudienceSection() {
   return (
     <section className="bg-ink gutter-x py-16 xl:py-20">
       <div className="mx-auto grid max-w-[1200px] gap-6 lg:grid-cols-2">
-        <article className="rounded-3xl border border-periwinkle/28 bg-white/6 p-8 xl:p-11">
+        {/* #scarica: where /scarica (the QR code) lands a visitor who isn't on a phone. */}
+        <article
+          id="scarica"
+          className="scroll-mt-4 rounded-3xl border border-periwinkle/28 bg-white/6 p-8 xl:p-11"
+        >
           <h3 className="mb-3.5 font-display text-[26px] leading-[1.14] font-bold text-white xl:text-[32px]">
             {t("app.title")}
           </h3>

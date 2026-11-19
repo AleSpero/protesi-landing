@@ -17,11 +17,16 @@ export const contactHref = "#";
 export const privacyHref = "/privacy-policy";
 export const cookiePolicyHref = "/cookie-policy";
 export const termsHref = "/termini-e-condizioni";
-/** The app's store listings, behind the badges on `/`. Set in the Vercel
- *  project's environment variables (then redeploy), so they go live without a
- *  code change; until then each badge points at `#`. */
-export const appStoreHref = process.env.NEXT_PUBLIC_APP_STORE_URL || "#";
-export const playStoreHref = process.env.NEXT_PUBLIC_PLAY_STORE_URL || "#";
+/** The app's store listings, behind the badges on `/`. The Italian storefront,
+ *  so a desktop visitor gets the Italian listing (a phone opens its own store
+ *  app regardless). NEXT_PUBLIC_APP_STORE_URL / NEXT_PUBLIC_PLAY_STORE_URL in
+ *  the Vercel project override them without a code change. */
+export const appStoreHref =
+  process.env.NEXT_PUBLIC_APP_STORE_URL ||
+  "https://apps.apple.com/it/app/protes%C3%AC-nomenclatore-digitale/id6817248111";
+export const playStoreHref =
+  process.env.NEXT_PUBLIC_PLAY_STORE_URL ||
+  "https://play.google.com/store/apps/details?id=com.nolides.protesi.protesi_app";
 
 /** The sibling audience landings. */
 export const produttoriHref = "/produttori";
